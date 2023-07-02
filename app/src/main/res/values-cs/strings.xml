@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ All rights reserved to IToncek
+  -->
+
+<resources>
+    <string name="app_name">iQPLANETÁRIUM</string>
+    <string name="loading">Načítání…</string>
+    <string name="nul">nul</string>
+    <string name="btn_details_txt">Více info</string>
+    <string name="fullness">/ 50 obsazeno</string>
+    <string name="btn_calendar_txt">Vyber den</string>
+</resources>

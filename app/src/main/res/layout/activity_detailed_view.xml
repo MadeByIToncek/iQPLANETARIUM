@@ -5,6 +5,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/s"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailedViewActivity">
@@ -17,7 +18,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/d1"
         app:layout_constraintStart_toStartOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/e2"
@@ -26,7 +27,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/e1"
         app:layout_constraintTop_toTopOf="@+id/e1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/e3"
@@ -35,7 +36,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/e2"
         app:layout_constraintTop_toTopOf="@+id/e1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/e4"
@@ -44,7 +45,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/e3"
         app:layout_constraintTop_toTopOf="@+id/e1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/e5"
@@ -53,7 +54,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/e6"
         app:layout_constraintTop_toTopOf="@+id/e1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/e6"
@@ -62,7 +63,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/e4"
         app:layout_constraintTop_toTopOf="@+id/e1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d1"
@@ -72,7 +73,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/c1"
         app:layout_constraintStart_toStartOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d2"
@@ -81,7 +82,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d1"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d3"
@@ -90,7 +91,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d2"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d4"
@@ -99,7 +100,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d3"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d5"
@@ -108,7 +109,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d4"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d6"
@@ -117,7 +118,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d5"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d7"
@@ -126,7 +127,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d6"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d8"
@@ -135,7 +136,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d7"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d9"
@@ -144,7 +145,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d8"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d10"
@@ -153,7 +154,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d9"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/d11"
@@ -162,7 +163,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/d10"
         app:layout_constraintTop_toTopOf="@+id/d1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c1"
@@ -172,7 +173,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/b1"
         app:layout_constraintStart_toStartOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c2"
@@ -181,7 +182,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c1"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c3"
@@ -190,7 +191,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c2"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c4"
@@ -199,7 +200,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c3"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c5"
@@ -208,7 +209,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c4"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c6"
@@ -217,7 +218,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c5"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c7"
@@ -226,7 +227,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c6"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c8"
@@ -235,7 +236,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c7"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c9"
@@ -244,7 +245,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c8"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c10"
@@ -253,7 +254,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c9"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c11"
@@ -262,7 +263,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c10"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/c12"
@@ -271,17 +272,17 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/c11"
         app:layout_constraintTop_toTopOf="@+id/c1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b1"
         android:layout_width="34dp"
         android:layout_height="34dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="236dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b2"
@@ -290,7 +291,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b1"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b3"
@@ -299,7 +300,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b2"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b4"
@@ -308,7 +309,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b3"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b5"
@@ -317,7 +318,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b4"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b6"
@@ -326,7 +327,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b5"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b7"
@@ -335,7 +336,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b6"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b8"
@@ -344,7 +345,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b7"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b9"
@@ -353,7 +354,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b8"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b10"
@@ -362,7 +363,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b9"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b11"
@@ -371,7 +372,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b10"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b12"
@@ -380,7 +381,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b11"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
 
     <ImageView
         android:id="@+id/b13"
@@ -389,6 +390,101 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/b12"
         app:layout_constraintTop_toTopOf="@+id/b1"
-        app:srcCompat="@drawable/seat" />
+        app:srcCompat="@drawable/seat_unset" />
+
+    <ImageView
+        android:id="@+id/a1"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/b1"
+        app:layout_constraintTop_toBottomOf="@+id/b1"
+        app:srcCompat="@drawable/seat_unset" />
+
+    <ImageView
+        android:id="@+id/a2"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/a1"
+        app:layout_constraintTop_toTopOf="@+id/a1"
+        app:srcCompat="@drawable/seat_unset" />
+
+    <ImageView
+        android:id="@+id/a3"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/a2"
+        app:layout_constraintTop_toTopOf="@+id/a1"
+        app:srcCompat="@drawable/seat_unset" />
+
+    <ImageView
+        android:id="@+id/a4"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/a3"
+        app:layout_constraintTop_toTopOf="@+id/a1"
+        app:srcCompat="@drawable/seat_unset" />
+
+    <ImageView
+        android:id="@+id/a5"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/a4"
+        app:layout_constraintTop_toTopOf="@+id/a1"
+        app:srcCompat="@drawable/seat_unset" />
+
+    <ImageView
+        android:id="@+id/a6"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/a5"
+        app:layout_constraintTop_toTopOf="@+id/a1"
+        app:srcCompat="@drawable/seat_unset" />
+
+    <ImageView
+        android:id="@+id/a7"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/a6"
+        app:layout_constraintTop_toTopOf="@+id/a1"
+        app:srcCompat="@drawable/seat_unset" />
+
+    <ImageView
+        android:id="@+id/a8"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/a7"
+        app:layout_constraintTop_toTopOf="@+id/a1"
+        app:srcCompat="@drawable/seat_unset" />
+
+    <TextView
+        android:id="@+id/detail_showname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/bold"
+        android:text="@string/loading"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detail_full"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/normal"
+        android:text="@string/loading"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/detail_showname"
+        app:layout_constraintTop_toBottomOf="@+id/detail_showname" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

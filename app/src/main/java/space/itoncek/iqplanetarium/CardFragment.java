@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -49,18 +50,26 @@ public class CardFragment extends Fragment {
         TextView start = inf.findViewById(R.id.start_time);
         TextView end = inf.findViewById(R.id.end_time);
         TextView duration = inf.findViewById(R.id.duration);
+        TextView full = inf.findViewById(R.id.full);
         Button details = inf.findViewById(R.id.details);
 
         showname.setText(requireArguments().getString("label"));
         start.setText(requireArguments().getString("start"));
         end.setText(requireArguments().getString("end"));
+        full.setText(String.valueOf(50-requireArguments().getInt("aval")));
 
         duration.setText(requireArguments().getString("diff"));
 
         details.setOnClickListener((b) -> {
-            Intent foo = new Intent(MainActivity.activity, DetailedViewActivity.class);
-            foo.putExtra("id", requireArguments().getString("id"));
-            MainActivity.activity.startActivity(foo);
+            if(!requireArguments().getString("id").equals("-1")) {
+                Intent foo = new Intent(MainActivity.activity, DetailedViewActivity.class);
+                foo.putExtra("id", requireArguments().getString("id"));
+                foo.putExtra("showname", requireArguments().getString("label"));
+                foo.putExtra("aval", requireArguments().getInt("aval"));
+                MainActivity.activity.startActivity(foo);
+            } else {
+                Toast.makeText(b.getContext(), "Nope!", Toast.LENGTH_SHORT).show();
+            }
         });
 
         return inf;

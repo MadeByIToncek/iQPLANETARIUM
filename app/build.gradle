@@ -11,7 +11,7 @@ android {
         minSdk 26
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "4.0-pre1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,8 +23,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_16
-        targetCompatibility JavaVersion.VERSION_16
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 

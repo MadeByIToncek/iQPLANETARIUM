@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">iQPLANETARIUM</string>
-    <string name="loading">Loading...</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loading">Loading…</string>
     <string name="nul">nul</string>
     <string name="btn_details_txt">More details</string>
+    <string name="fullness">/ 50 seats</string>
+    <string name="btn_calendar_txt">Select day</string>
 </resources>

@@ -1,60 +1,63 @@
 package space.itoncek.iqplanetarium;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static MainActivity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        activity = this;
         iQAPIAdapter adapter = new iQAPIAdapter(this);
 
         List<Show> shows = null;
         try {
-            shows = adapter.getDayShows(LocalDate.now());
+            System.out.println("Requesting");
+            shows = adapter.getDayShows(LocalDate.now().plus(2, ChronoUnit.DAYS));
+            System.out.println("Recived " + shows.size() + " shows");
         } catch (JSONException | IOException | InterruptedException e) {
+            e.printStackTrace();
             Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
         }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayout layout = findViewById(R.id.cardLayout);
+        LinearLayout layout = findViewById(R.id.lineal);
 
         assert shows != null;
         for (Show show : shows) {
-            CardView cardview = new CardView(this);
+            if (savedInstanceState == null) {
+                Bundle bundle = new Bundle();
+                bundle.putString("label", show.label());
+                bundle.putString("start", show.start().format(DateTimeFormatter.ISO_TIME));
+                bundle.putString("end", show.end().format(DateTimeFormatter.ISO_TIME));
+                bundle.putString("diff", TimeUnit.MILLISECONDS.toMinutes(Duration.between(show.start(), show.end()).toMillis()) + " min");
+                bundle.putString("id", show.id());
 
-            CardView.LayoutParams layoutparams = new CardView.LayoutParams(
-                    CardView.LayoutParams.WRAP_CONTENT,
-                    CardView.LayoutParams.WRAP_CONTENT
-            );
+                getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .add(R.id.lineal, CardFragment.class, bundle)
+                        .commit();
 
-            cardview.setLayoutParams(layoutparams);
-            cardview.setRadius(15);
-            cardview.setPadding(25, 25, 25, 25);
-            cardview.setCardBackgroundColor(Color.MAGENTA);
-            cardview.setMaxCardElevation(30);
-            cardview.setMaxCardElevation(6);
-
-            TextView title = new TextView(this);
-            title.setLayoutParams(layoutparams);
-            title.setText(show.getLabel());
-
-            cardview.addView(title);
-
-            layout.addView(cardview);
+                Space space = new Space(this);
+                space.setMinimumHeight(8);
+            }
         }
         TextView v = findViewById(R.id.date);
         v.setText(LocalDate.now().format(DateTimeFormatter.ISO_DATE));

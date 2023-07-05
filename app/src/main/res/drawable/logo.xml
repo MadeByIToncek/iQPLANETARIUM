@@ -1,0 +1,29 @@
+<!--
+  ~ All rights reserved to IToncek
+  -->
+
+<!--
+  ~ All rights reserved to IToncek
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="400dp"
+    android:viewportWidth="623.62"
+    android:viewportHeight="623.62">
+    <path
+        android:fillColor="#009fe3"
+        android:pathData="M1.12,0h622.51v41.57h-622.51z" />
+    <path
+        android:fillColor="#00a0de"
+        android:pathData="M1.12,582.05h622.51v41.57h-622.51z" />
+    <path
+        android:fillColor="#fff"
+        android:pathData="M101.25,99.85h437.89v474.23h-437.89z" />
+    <path
+        android:fillColor="#00a0de"
+        android:pathData="M425,183.13H331.79c-16.5,0 -26.72,10.19 -26.72,27.17v185.44c0,17.01 10.22,26.71 26.72,26.71H425c16.5,0 26.7,-9.71 26.7,-26.71v-185.44C451.7,193.31 441.5,183.13 425,183.13Z" />
+    <path
+        android:fillColor="#00a0de"
+        android:pathData="M0,13.1L0,610.52L623.62,610.52L623.62,13.1ZM184.17,472.95L130.29,472.95L130.29,220.51h53.87ZM184.17,184.07L130.29,184.07v-62.63h53.87ZM509.46,398.66c0,44.17 -30.11,74.28 -74.28,74.28L407.51,472.95L407.51,540.91L349.75,540.91L349.75,472.95h-28.63c-43.73,0 -73.81,-30.11 -73.81,-74.28L247.31,207.38c0,-44.66 30.07,-74.25 73.81,-74.25L435.18,133.13c44.16,0 74.28,29.59 74.28,74.25Z" />
+</vector>

@@ -1,49 +1,40 @@
+/*
+ * All rights reserved to IToncek
+ */
+
 package space.itoncek.iqplanetarium;
 
-import android.app.DatePickerDialog;
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     public static MainActivity activity;
     public iQAPIAdapter adapter;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         activity = this;
         adapter = new iQAPIAdapter(this);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -55,11 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
         ((CalendarView) findViewById(R.id.cal)).setOnDateChangeListener((calendarView, year, month, day) -> {
             ((LinearLayout) findViewById(R.id.lineal)).removeAllViews();
-            updateShows(LocalDate.of(year, month+1, day));
+            updateShows(LocalDate.of(year, month + 1, day));
             calendarView.setVisibility(View.GONE);
         });
+
+        findViewById(R.id.prv).setOnClickListener((l) -> updateShows(adapter.date.minusDays(1)));
+        findViewById(R.id.nxt).setOnClickListener((l) -> updateShows(adapter.date.plusDays(1)));
+
         updateShows(LocalDate.now());
     }
+
 
     private void updateShows(LocalDate date) {
         ((LinearLayout) findViewById(R.id.lineal)).removeAllViews();

@@ -1,3 +1,7 @@
+<!--
+  ~ All rights reserved to IToncek
+  -->
+
 <resources>
     <string name="app_name">iQPLANETARIUM</string>
     <string name="loading">Loading…</string>
@@ -5,4 +9,6 @@
     <string name="btn_details_txt">More details</string>
     <string name="fullness">/ 50 seats</string>
     <string name="btn_calendar_txt">Select day</string>
+    <string name="btn_nxt_day_txt">Next day</string>
+    <string name="btn_prv_day_txt">Previous day</string>
 </resources>

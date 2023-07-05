@@ -2,6 +2,10 @@
  * All rights reserved to IToncek
  */
 
+/*
+ * All rights reserved to IToncek
+ */
+
 package space.itoncek.iqplanetarium;
 
 import android.content.Context;
@@ -16,7 +20,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,12 +33,14 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class iQAPIAdapter {
     private final Context context;
+    public LocalDate date = LocalDate.now();
 
     public iQAPIAdapter(Context context) {
         this.context = context;
     }
 
     public List<Show> getDayShows(LocalDate day) throws JSONException, IOException, InterruptedException {
+        date = day;
         String format = day.format(DateTimeFormatter.BASIC_ISO_DATE);
         String datest = format.substring(0, 4) + "-" + format.substring(4, 6) + "-" + format.substring(6, 8);
         AtomicReference<String> atomstring = new AtomicReference<>();

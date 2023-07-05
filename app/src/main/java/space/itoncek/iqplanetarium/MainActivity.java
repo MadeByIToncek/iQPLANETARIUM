@@ -2,6 +2,10 @@
  * All rights reserved to IToncek
  */
 
+/*
+ * All rights reserved to IToncek
+ */
+
 package space.itoncek.iqplanetarium;
 
 import android.annotation.SuppressLint;
@@ -15,6 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
 
 import org.json.JSONException;
 
@@ -32,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        new AppUpdater(this)
+                .showEvery(5)
+                .setUpdateFrom(UpdateFrom.JSON)
+                .setUpdateJSON("https://raw.githubusercontent.com/javiersantos/AppUpdater/master/update-changelog.json")
+                .start();
+
         activity = this;
         adapter = new iQAPIAdapter(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

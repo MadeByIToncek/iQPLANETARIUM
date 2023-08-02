@@ -2,6 +2,10 @@
   ~ All rights reserved to IToncek
   -->
 
+<!--
+  ~ All rights reserved to IToncek
+  -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -32,7 +36,7 @@
                 android:layout_marginEnd="24dp"
                 android:fontFamily="@font/semibold"
                 android:text="@string/loading"
-                android:textColor="@color/iqprimary_text"
+                android:textColor="@color/background"
                 android:textSize="20sp"
                 android:typeface="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -49,7 +53,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/normal"
                 android:text="@string/loading"
-                android:textColor="@color/iqprimary_text"
+                android:textColor="@color/background"
                 app:layout_constraintStart_toStartOf="@+id/showname"
                 app:layout_constraintTop_toBottomOf="@+id/showname" />
 
@@ -60,7 +64,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/normal"
                 android:text="@string/loading"
-                android:textColor="@color/iqprimary_text"
+                android:textColor="@color/background"
                 app:layout_constraintStart_toStartOf="@+id/showname"
                 app:layout_constraintTop_toBottomOf="@+id/start_time" />
 
@@ -72,7 +76,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/normal"
                 android:text="@string/fullness"
-                android:textColor="@color/iqprimary_text"
+                android:textColor="@color/background"
                 app:layout_constraintStart_toEndOf="@+id/full"
                 app:layout_constraintTop_toBottomOf="@+id/start_time" />
 
@@ -84,7 +88,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/normal"
                 android:text="@string/loading"
-                android:textColor="@color/iqprimary_text"
+                android:textColor="@color/background"
                 app:layout_constraintStart_toEndOf="@+id/duration"
                 app:layout_constraintTop_toBottomOf="@+id/showname" />
 
@@ -96,7 +100,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/normal"
                 android:text="@string/loading"
-                android:textColor="@color/iqprimary_text"
+                android:textColor="@color/background"
                 app:layout_constraintStart_toEndOf="@+id/start_time"
                 app:layout_constraintTop_toBottomOf="@+id/showname" />
 
@@ -105,10 +109,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/iqprimary_altdrk"
+                android:backgroundTint="@color/background"
                 android:fontFamily="@font/bold"
                 android:text="@string/btn_details_txt"
-                android:textColor="@color/iqprimary_altdrk_text"
+                android:textColor="@color/iqprimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/showname"
                 app:layout_constraintTop_toBottomOf="@+id/end_time"

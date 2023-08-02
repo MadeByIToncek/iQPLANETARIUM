@@ -2,12 +2,15 @@
  * All rights reserved to IToncek
  */
 
+/*
+ * All rights reserved to IToncek
+ */
+
 package space.itoncek.iqplanetarium;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
-import android.graphics.ColorFilter;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +20,7 @@ import org.json.JSONException;
 
 public class DetailedViewActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +28,15 @@ public class DetailedViewActivity extends AppCompatActivity {
 
         String id = this.getIntent().getStringExtra("id");
         String showname = this.getIntent().getStringExtra("showname");
-        int aval = this.getIntent().getIntExtra("aval",50);
+        int aval = this.getIntent().getIntExtra("aval", 50);
+
+        findViewById(R.id.btn_rtn).setOnClickListener((l) -> {
+            this.finish();
+        });
 
         ((TextView) findViewById(R.id.detail_showname)).setText(showname);
         ((TextView) findViewById(R.id.detail_full)).setText((50 - aval) + " " + getResources().getString(R.string.fullness));
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         iQAPIAdapter adapter = new iQAPIAdapter(this);
         Seats seatsForShow = null;
         try {
@@ -36,17 +44,16 @@ public class DetailedViewActivity extends AppCompatActivity {
         } catch (InterruptedException | JSONException e) {
             e.printStackTrace();
         }
-        assert seatsForShow != null;
-        for (int r = 1; r <= 5; r++) {
+        if (seatsForShow != null) for (int r = 1; r <= 5; r++) {
             for (int s = 1; s <= seatsForShow.seatAmt(r); s++) {
-                int ids = decodeSeat(r,s);
+                int ids = decodeSeat(r, s);
                 System.out.println(r + "/" + s + " had been assigned " + ids);
-                if(ids==-1){
+                if (ids == -1) {
                     ids = R.id.a1;
                 }
                 ImageView view = findViewById(ids);
-                if(seatsForShow.seats.containsKey(new Seat(r,s))){
-                    if(Boolean.TRUE.equals(seatsForShow.seats.get(new Seat(r, s)))){
+                if (seatsForShow.seats.containsKey(new Seat(r, s))) {
+                    if (Boolean.TRUE.equals(seatsForShow.seats.get(new Seat(r, s)))) {
                         view.setImageResource(R.drawable.seat_full);
                     } else {
                         view.setImageResource(R.drawable.seat_empty);

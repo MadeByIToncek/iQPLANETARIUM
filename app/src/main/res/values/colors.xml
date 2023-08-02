@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ All rights reserved to IToncek
+  -->
+
 <resources>
     <color name="iqprimary">#00A3E0</color>
     <color name="iqprimary_alt">#2196F3</color>
     <color name="iqprimary_drk">#0D47A1</color>
     <color name="iqprimary_altdrk">#1A237E</color>
+    <color name="background">#FF000B1F</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="iqprimary_text">#000000</color>
     <color name="iqprimary_altdrk_text">#FFFFFF</color>
+    <color name="err_fg">#FF0000</color>
+    <color name="err_bg">#230906</color>
 </resources>

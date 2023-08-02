@@ -2,12 +2,17 @@
   ~ All rights reserved to IToncek
   -->
 
+<!--
+  ~ All rights reserved to IToncek
+  -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/s"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".DetailedViewActivity">
 
     <ImageView
@@ -473,6 +478,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/bold"
         android:text="@string/loading"
+        android:textColor="@color/iqprimary"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -483,8 +489,23 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/normal"
         android:text="@string/loading"
+        android:textColor="@color/iqprimary"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/detail_showname"
         app:layout_constraintTop_toBottomOf="@+id/detail_showname" />
+
+    <Button
+        android:id="@+id/btn_rtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/iqprimary"
+        android:fontFamily="@font/semibold"
+        android:shadowColor="@color/iqprimary"
+        android:text="@string/btn_return"
+        android:textColor="@color/background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,9 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".Offline"
+            android:exported="false" />
+        <activity
             android:name=".DetailedViewActivity"
             android:exported="false" />
         <activity

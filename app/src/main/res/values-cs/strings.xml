@@ -6,6 +6,10 @@
   ~ All rights reserved to IToncek
   -->
 
+<!--
+  ~ All rights reserved to IToncek
+  -->
+
 <resources>
     <string name="app_name">iQPLANETÁRIUM</string>
     <string name="loading">Načítání…</string>
@@ -15,4 +19,6 @@
     <string name="btn_calendar_txt">Vyber den</string>
     <string name="btn_nxt_day_txt">Další den</string>
     <string name="btn_prv_day_txt">Předchozí den</string>
+    <string name="btn_return">Return</string>
+    <string name="offline_title">You are offline</string>
 </resources>

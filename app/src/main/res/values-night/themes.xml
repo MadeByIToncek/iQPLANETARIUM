@@ -1,3 +1,7 @@
+<!--
+  ~ All rights reserved to IToncek
+  -->
+
 <resources>
     <!-- Base application theme. -->
     <style name="Theme.IQPLANETARIUM" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
@@ -11,6 +15,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:background">@color/background</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

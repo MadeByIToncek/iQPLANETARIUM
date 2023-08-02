@@ -6,9 +6,14 @@
  * All rights reserved to IToncek
  */
 
+/*
+ * All rights reserved to IToncek
+ */
+
 package space.itoncek.iqplanetarium;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
@@ -72,19 +77,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateShows(LocalDate date) {
         ((LinearLayout) findViewById(R.id.lineal)).removeAllViews();
-
+        ((TextView) findViewById(R.id.date)).setText(date.format(DateTimeFormatter.ISO_DATE));
         List<Show> shows = null;
         try {
             System.out.println("Requesting");
             shows = adapter.getDayShows(date);
             System.out.println("Recived " + shows.size() + " shows");
-        } catch (JSONException | IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
             Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+        } catch (JSONException ignored) {
         }
 
-        assert shows != null;
-        for (Show show : shows) {
+        if (shows == null) {
+            Intent foo = new Intent(MainActivity.activity, Offline.class);
+            this.startActivity(foo);
+        } else for (Show show : shows) {
             Bundle bundle = new Bundle();
             bundle.putString("label", show.label());
             bundle.putString("start", show.start().format(DateTimeFormatter.ISO_TIME));
@@ -102,7 +110,5 @@ public class MainActivity extends AppCompatActivity {
             space.setMinimumHeight(8);
 
         }
-        TextView v = findViewById(R.id.date);
-        v.setText(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
     }
 }

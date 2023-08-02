@@ -3,12 +3,17 @@
   ~ All rights reserved to IToncek
   -->
 
+<!--
+  ~ All rights reserved to IToncek
+  -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <TextView
@@ -17,6 +22,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/bold"
         android:text="@string/loading"
+        android:textColor="@color/iqprimary"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,8 +35,15 @@
         android:id="@+id/cal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:focusedMonthDateColor="@color/iqprimary"
+        android:selectedWeekBackgroundColor="@color/iqprimary_alt"
+        android:unfocusedMonthDateColor="@color/iqprimary_drk"
         android:visibility="visible"
+        android:weekNumberColor="@color/iqprimary_alt"
+        android:weekSeparatorLineColor="@color/iqprimary_altdrk"
         app:layout_constraintBottom_toTopOf="@+id/prv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +53,12 @@
         android:id="@+id/prv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/iqprimary"
+        android:fontFamily="@font/semibold"
         android:text="@string/btn_prv_day_txt"
+        android:textColor="@color/background"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cal" />
 
@@ -48,7 +66,12 @@
         android:id="@+id/nxt"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/iqprimary"
+        android:fontFamily="@font/semibold"
         android:text="@string/btn_nxt_day_txt"
+        android:textColor="@color/background"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/prv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/prv"
@@ -58,6 +81,8 @@
         android:id="@+id/scroller"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/nul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +106,11 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/iqprimary"
+        android:fontFamily="@font/semibold"
         android:text="@string/btn_calendar_txt"
+        android:textColor="@color/background"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/date"

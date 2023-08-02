@@ -1,8 +1,9 @@
 {
-    "latestVersion": "4.0.0",
-    "latestVersionCode": 1,
+    "latestVersion": "4.0.1",
+    "latestVersionCode": 2,
     "url": "https://github.com/MadeByIToncek/iQPLANETARIUM/releases",
     "releaseNotes": [
-        "- Rewritten to Java"
+        "- Styling",
+        "- Offline screen"
     ]
 }

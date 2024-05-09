@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">iQScanner</string>
+    <string name="seat">seat</string>
+    <string name="scanner_ready">READY TO SCAN</string>
+    <string name="scanner_accept">ENTRY ALLOWED</string>
+    <string name="scanner_deny">ENTRY DENIED</string>
+    <string name="scanner_dupl">POSSIBLE DUPLICITY</string>
+    <string name="exit" translatable="false">⬅</string>
+    <string name="loading">Loading…</string>
+    <string name="not_speakable" >This element has no text attached</string>
+    <string name="enter_scanmode">Enter scan mode</string>
+    <string name="error_title">NOT FOUND</string>
+    <string name="error_subtitle">I swear there was something there…</string>
+    <string name="offline_title">You are offline!</string>
+    <string name="scanner_static_show">"Show: "</string>
+    <string name="scanner_static_starts_in">"Show starts in "</string>
+    <string name="scanner_undefined">LOADING</string>
+</resources>

@@ -25,6 +25,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -51,7 +52,7 @@ public class ScannerActivity extends AppCompatActivity {
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         Intent intent=this.getIntent();
-        event = (DayShowsInfo.Event) intent.getBundleExtra("bundle").getSerializable("showID");
+        event = (DayShowsInfo.Event) Objects.requireNonNull(intent.getBundleExtra("bundle")).getSerializable("showID");
 
         setPadding();
         updateDetails();
@@ -99,30 +100,28 @@ public class ScannerActivity extends AppCompatActivity {
             top_card.setCardBackgroundColor(ContextCompat.getColor(activity, status.background));
             bottom_card.setCardBackgroundColor(ContextCompat.getColor(activity, status.background));
 
-            return_button.setBackgroundTintList(ContextCompat.getColorStateList(activity,status.background));;
+            return_button.setBackgroundTintList(ContextCompat.getColorStateList(activity,status.background));
             return_button.setColorFilter(ContextCompat.getColor(this, status.foreground));
         });
     }
 
     private void updateSeats() {
-        runOnUiThread(()-> {
-            event.seatmap.forEach((row, seat) -> {
-                Row r = Row.getRow(row);
-                seat.forEach((id, state)-> {
-                    ImageView img = getSeat(r, id);
-                    switch (state) {
-                        case EMTPY:
-                            img.setColorFilter(ContextCompat.getColor(this, R.color.ok_fg), android.graphics.PorterDuff.Mode.SRC_IN);break;
-                        case OCCUPIED:
-                            img.setColorFilter(ContextCompat.getColor(this, R.color.err_fg), android.graphics.PorterDuff.Mode.SRC_IN);break;
-                        case ENTRY_ALLOWED:
-                            img.setColorFilter(ContextCompat.getColor(this, R.color.warn_fg), android.graphics.PorterDuff.Mode.SRC_IN);break;
-                        case POSSIBLE_DUPLICATE:
-                            img.setColorFilter(ContextCompat.getColor(this, R.color.duplicate_fg), android.graphics.PorterDuff.Mode.SRC_IN);break;
-                    }
-                });
+        runOnUiThread(()-> event.seatmap.forEach((row, seat) -> {
+            Row r = Row.getRow(row);
+            seat.forEach((id, state)-> {
+                ImageView img = getSeat(r, id);
+                switch (state) {
+                    case EMTPY:
+                        img.setColorFilter(ContextCompat.getColor(this, R.color.ok_fg), android.graphics.PorterDuff.Mode.SRC_IN);break;
+                    case OCCUPIED:
+                        img.setColorFilter(ContextCompat.getColor(this, R.color.err_fg), android.graphics.PorterDuff.Mode.SRC_IN);break;
+                    case ENTRY_ALLOWED:
+                        img.setColorFilter(ContextCompat.getColor(this, R.color.warn_fg), android.graphics.PorterDuff.Mode.SRC_IN);break;
+                    case POSSIBLE_DUPLICATE:
+                        img.setColorFilter(ContextCompat.getColor(this, R.color.duplicate_fg), android.graphics.PorterDuff.Mode.SRC_IN);break;
+                }
             });
-        });
+        }));
     }
 
     private ImageView getSeat(Row row, Integer column) {

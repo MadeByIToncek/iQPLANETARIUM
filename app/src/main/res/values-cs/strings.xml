@@ -5,11 +5,11 @@
     <string name="scanner_ready">PŘIPRAVEN</string>
     <string name="scanner_accept">VSTUP POVOLEN</string>
     <string name="scanner_deny">VSTUP ZAKÁZÁN</string>
-    <string name="loading">Načítání...</string>
+    <string name="loading">Načítání…</string>
     <string name="not_speakable">Tento element nemá žádný popis</string>
     <string name="enter_scanmode">Začít skenovat</string>
     <string name="error_title">NENALEZENO</string>
-    <string name="error_subtitle">Hmm...přísahám že tady něco bylo</string>
+    <string name="error_subtitle">Hmm… přísahám že tady něco bylo</string>
     <string name="offline_title">Nepřipojeno!</string>
     <string name="scanner_static_show">"Pořad: "</string>
     <string name="scanner_static_starts_in">"Pořad začíná za "</string>

@@ -155,11 +155,11 @@ public class IQApi {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-    };
+    }
 
     public static class CachedDayShowsInfo {
-        DayShowsInfo info;
-        ZonedDateTime purgeAt;
+        final DayShowsInfo info;
+        final ZonedDateTime purgeAt;
 
         public CachedDayShowsInfo(DayShowsInfo info, ZonedDateTime purgeAt) {
             this.info=info;

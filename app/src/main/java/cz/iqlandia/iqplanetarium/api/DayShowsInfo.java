@@ -10,9 +10,9 @@ import java.util.TreeSet;
 
 public class DayShowsInfo {
     @NonNull
-    public Status status;
+    public final Status status;
     @NonNull
-    public TreeSet<Event> events;
+    public final TreeSet<Event> events;
 
     public DayShowsInfo(@NonNull Status status, @NonNull TreeSet<Event> events) {
         this.status = status;
@@ -41,19 +41,19 @@ public class DayShowsInfo {
 
     public static class Event implements Serializable, Comparable<Event> {
         @NonNull
-        public ArrayList<Prices> prices;
+        public final ArrayList<Prices> prices;
         @NonNull
-        public ZonedDateTime start;
+        public final ZonedDateTime start;
         @NonNull
-        public ZonedDateTime end;
+        public final ZonedDateTime end;
         @NonNull
-        public String name;
-        public Integer reservationID;
-        public Integer reservationItemID;
-        public Integer CurrentCapacity;
-        public Integer MaxCapacity;
+        public final String name;
+        public final Integer reservationID;
+        public final Integer reservationItemID;
+        public final Integer CurrentCapacity;
+        public final Integer MaxCapacity;
         @NonNull
-        public TreeMap<Integer, TreeMap<Integer, SeatState>> seatmap;
+        public final TreeMap<Integer, TreeMap<Integer, SeatState>> seatmap;
 
         public Event(@NonNull ArrayList<Prices> prices,
                      @NonNull ZonedDateTime start,
@@ -89,10 +89,10 @@ public class DayShowsInfo {
 
 
         public static class Prices implements Serializable{
-            public int ID;
+            public final int ID;
             @NonNull
-            public String name;
-            public int price;
+            public final String name;
+            public final int price;
             public Prices(int ID, @NonNull String name, int price) {
                 this.ID = ID;
                 this.name = name;
@@ -100,7 +100,7 @@ public class DayShowsInfo {
             }
         }
 
-        public static enum SeatState implements Serializable {
+        public enum SeatState implements Serializable {
             EMTPY,
             OCCUPIED,
             ENTRY_ALLOWED,

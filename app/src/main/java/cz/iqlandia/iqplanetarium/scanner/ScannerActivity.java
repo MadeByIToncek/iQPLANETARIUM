@@ -1,6 +1,5 @@
 package cz.iqlandia.iqplanetarium.scanner;
 
-import static android.os.SystemClock.sleep;
 import static cz.iqlandia.iqplanetarium.scanner.MainActivity.activity;
 
 import android.content.Context;
@@ -10,6 +9,7 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +25,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -40,7 +39,7 @@ public class ScannerActivity extends AppCompatActivity {
     private DayShowsInfo.Event event;
     private final Timer timer = new Timer();
     private StatusColor status = StatusColor.UNSET;
-    private Thread resetThread;
+    private Timer resetThread = new Timer();
     private Vibrator v;
 
 
@@ -89,6 +88,7 @@ public class ScannerActivity extends AppCompatActivity {
             TextView start2 = findViewById(R.id.show_starts_in_static);
             CardView top_card = findViewById(R.id.top_card);
             CardView bottom_card = findViewById(R.id.bottom_card);
+            ImageButton return_button = findViewById(R.id.back);
 
             title1.setTextColor(ContextCompat.getColor(activity, status.foreground));
             title1.setText(c.textR);
@@ -99,6 +99,8 @@ public class ScannerActivity extends AppCompatActivity {
             top_card.setCardBackgroundColor(ContextCompat.getColor(activity, status.background));
             bottom_card.setCardBackgroundColor(ContextCompat.getColor(activity, status.background));
 
+            return_button.setBackgroundTintList(ContextCompat.getColorStateList(activity,status.background));;
+            return_button.setColorFilter(ContextCompat.getColor(this, status.foreground));
         });
     }
 
@@ -213,30 +215,27 @@ public class ScannerActivity extends AppCompatActivity {
         scannerView.setCropRatio(.75f);
         scannerView.setOnBarcodeListener(result -> {
             if (!result.getText().equals(last)) {
-                Random r = new Random();
 
-                switch (r.nextInt(3)) {
-                    case 0:
+                switch (result.getText()) {
+                    case "VALID_TICKET":
                         recolor(StatusColor.ACCEPT);
                         v.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                         break;
-                    case 1:
+                    case "DUPLICATE_TICKET":
                         recolor(StatusColor.DUPLICITY);
-                        v.vibrate(VibrationEffect.createOneShot(300,VibrationEffect.DEFAULT_AMPLITUDE));
+                        v.vibrate(VibrationEffect.createOneShot(425, VibrationEffect.DEFAULT_AMPLITUDE));
                         break;
-                    case 2:
+                    case "INVALID_TICKET":
                         recolor(StatusColor.ERROR);
                         v.vibrate(VibrationEffect.createOneShot(750, VibrationEffect.DEFAULT_AMPLITUDE));
                         break;
                 }
 
+                resetThread.cancel();
+                resetThread.purge();
 
-                if(resetThread != null) {
-                    resetThread.interrupt();
-                    resetThread = null;
-                }
-
-                resetThread = generateResetThread();
+                resetThread = new Timer();
+                resetThread.schedule(generateResetThread(), 5000);
 
                 last = result.getText();
             }
@@ -249,11 +248,13 @@ public class ScannerActivity extends AppCompatActivity {
         recolor(StatusColor.READY);
     }
 
-    private Thread generateResetThread() {
-        return new Thread(()-> {
-            sleep(3000);
-            recolor(StatusColor.ACCEPT);
-        });
+    private TimerTask generateResetThread() {
+        return new TimerTask() {
+            @Override
+            public void run() {
+                recolor(StatusColor.READY);
+            }
+        };
     }
 
     private void setPadding() {

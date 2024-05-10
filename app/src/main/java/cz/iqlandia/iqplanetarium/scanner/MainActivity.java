@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.CompletableFuture;
 
 import cz.iqlandia.iqplanetarium.api.DayShowsInfo;
@@ -84,11 +86,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if (info == null) {
                     Log.d("updateList()", "Info is null, throwing");
-                    runOnUiThread(this::showError);
+                    showError();
                 } else {
                     Log.d("updateList()", "Info is not null, generating new view");
-                    runOnUiThread(() -> generateList(info));
+                    generateList(info);
                 }
+
+                ((TextView)findViewById(R.id.date)).setText(date.format(DateTimeFormatter.ISO_LOCAL_DATE));
+
             });
         });
 

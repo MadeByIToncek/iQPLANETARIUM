@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         feedback.setOnClickListener((c) -> FirebaseAppDistribution.getInstance().startFeedback("Submit feedback :)"));
     }
 
+
     private void scheduleUpdater() {
         stopAndResetTimer();
         timer.schedule(new TimerTask() {

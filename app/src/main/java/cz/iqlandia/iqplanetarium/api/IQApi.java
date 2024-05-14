@@ -31,22 +31,20 @@ public class IQApi {
     private static final HashMap<LocalDate,CachedDayShowsInfo> cache = new HashMap<>();
     public static @Nullable DayShowsInfo getShowInfoForDateCached(@NotNull LocalDate date) throws IOException {
         if(cache.containsKey(date)) {
-            if(Objects.requireNonNull(cache.get(date)).purgeAt.isBefore(ZonedDateTime.now())) {
+            if(Objects.requireNonNull(cache.get(date)).purgeAt.isAfter(ZonedDateTime.now())) {
+                Log.i("ShowCache", "Cache hit");
                 return Objects.requireNonNull(cache.get(date)).info;
             } else {
+                Log.i("ShowCache", "Cache stale");
                 cache.remove(date);
                 DayShowsInfo info = getShowInfoForDate(date);
-                if(info!=null){
-                    cache.put(date, new CachedDayShowsInfo(info, ZonedDateTime.now().plusMinutes(5)));
-                }
+                cache.put(date, new CachedDayShowsInfo(info, ZonedDateTime.now().plusMinutes(5)));
                 return info;
             }
         } else {
-            cache.remove(date);
+            Log.i("ShowCache", "Cache miss");
             DayShowsInfo info = getShowInfoForDate(date);
-            if(info!=null){
-                cache.put(date, new CachedDayShowsInfo(info, ZonedDateTime.now().plusMinutes(5)));
-            }
+            cache.put(date, new CachedDayShowsInfo(info, ZonedDateTime.now().plusMinutes(5)));
             return info;
         }
     }
@@ -57,7 +55,8 @@ public class IQApi {
 
     public static @Nullable DayShowsInfo getShowInfoForDate(@NotNull LocalDate date) throws IOException {
         try {
-            Log.d("IQApi", "Getting show info for date: " + date.format(DateTimeFormatter.ISO_LOCAL_DATE));            OkHttpClient client = new OkHttpClient();
+//            Log.d("IQApi", "Getting show info for date: " + date.format(DateTimeFormatter.ISO_LOCAL_DATE));
+            OkHttpClient client = new OkHttpClient();
 
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("date", date.format(DateTimeFormatter.ISO_LOCAL_DATE));
@@ -69,30 +68,30 @@ public class IQApi {
                     .post(requestBody)
                     .build();
 
-            Log.d("IQApi", "Sending request: " + request.url());
+//            Log.d("IQApi", "Sending request: " + request.url());
             Response response = client.newCall(request).execute();
 
             assert response.body() != null;
-            Log.d("IQApi", "Got response: " + response.code());
-            Log.d("IQApi", "Deserializing response");
+//            Log.d("IQApi", "Got response: " + response.code());
+//            Log.d("IQApi", "Deserializing response");
             JSONObject resp = new JSONObject(response.body().string());
             response.close();
 
-            Log.d("IQApi", "Parsing response");
+//            Log.d("IQApi", "Parsing response");
             DayShowsInfo.Status status = DayShowsInfo.Status.getStatus(resp.getString("status"));
             TreeSet<DayShowsInfo.Event> events = new TreeSet<>();
 
-            Log.d("IQApi", "Status: " + status);
+//            Log.d("IQApi", "Status: " + status);
             if (status != DayShowsInfo.Status.UNKNOWN) {
-                Log.d("IQApi", "Parsing events");
+//                Log.d("IQApi", "Parsing events");
                 JSONArray eventsArray = resp.getJSONObject("data").getJSONArray("events");
 
                 for (int i = 0; i < eventsArray.length(); i++) {
                     JSONObject event = eventsArray.getJSONObject(i);
 
-                    Log.d("IQApi", "Parsing event: " + event.getString("Name"));
+//                    Log.d("IQApi", "Parsing event: " + event.getString("Name"));
 
-                    Log.d("IQApi", "Parsing prices");
+//                    Log.d("IQApi", "Parsing prices");
                     // Parsing prices
                     ArrayList<DayShowsInfo.Event.Prices> prices = new ArrayList<>();
                     for (int j = 0; j < event.getJSONArray("Articles").length(); j++) {
@@ -100,16 +99,16 @@ public class IQApi {
                         prices.add(new DayShowsInfo.Event.Prices(price.getInt("ID"), price.getString("Name"), price.getInt("Price")));
                     }
 
-                    Log.d("IQApi", "Prices: " + prices);
-                    Log.d("IQApi", "Parsing start and end");
+//                    Log.d("IQApi", "Prices: " + prices);
+//                    Log.d("IQApi", "Parsing start and end");
                     // Parsing start and end
                     ZonedDateTime start = LocalDateTime.parse(event.getString("DateFrom")).atZone(ZoneId.systemDefault());
                     ZonedDateTime end = LocalDateTime.parse(event.getString("DateTo")).atZone(ZoneId.of("Europe/Prague"));
 
-                    Log.d("IQApi", "Start: " + start.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
-                    Log.d("IQApi", "End: " + end.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+//                    Log.d("IQApi", "Start: " + start.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+//                    Log.d("IQApi", "End: " + end.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
 
-                    Log.d("IQApi", "Parsing meta");
+//                    Log.d("IQApi", "Parsing meta");
                     //Parsing meta
                     String name = event.getString("Name");
                     int reservationID = event.getInt("ReservationID");
@@ -117,7 +116,7 @@ public class IQApi {
                     int currentCapacity = event.getInt("SingleEntrances");
                     int maxCapacity = event.getInt("TotalCapacity");
 
-                    Log.d("IQApi", "Parsing seats");
+//                    Log.d("IQApi", "Parsing seats");
                     //Parsing seats
                     TreeMap<Integer, TreeMap<Integer, DayShowsInfo.Event.SeatState>> seats = new TreeMap<>();
 
@@ -134,7 +133,7 @@ public class IQApi {
                         seats.put(Integer.parseInt(row.getString("Number")), columns);
                     }
 
-                    Log.d("IQApi", "Finishing");
+//                    Log.d("IQApi", "Finishing");
                     events.add(new DayShowsInfo.Event(prices,
                             start,
                             end,
@@ -158,10 +157,10 @@ public class IQApi {
     }
 
     public static class CachedDayShowsInfo {
-        final DayShowsInfo info;
+        final @Nullable DayShowsInfo info;
         final ZonedDateTime purgeAt;
 
-        public CachedDayShowsInfo(DayShowsInfo info, ZonedDateTime purgeAt) {
+        public CachedDayShowsInfo(@Nullable DayShowsInfo info, ZonedDateTime purgeAt) {
             this.info=info;
             this.purgeAt=purgeAt;
         }

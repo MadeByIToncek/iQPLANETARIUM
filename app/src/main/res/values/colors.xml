@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="iqprimary">#00A3E0</color>
+    <color name="iqprimary">#00A0DE</color>
     <color name="background">#FF0b163f</color>
     <color name="black">#FF000000</color>
-    <color name="err_fg">#FF0000</color>
-    <color name="err_bg">#230906</color>
-    <color name="ok_fg">#00FF00</color>
-    <color name="ok_bg">#092204</color>
-    <color name="warn_fg">#FF9900</color>
+    <color name="err_fg">#C80732</color>
+    <color name="err_bg">#290109</color>
+    <color name="ok_fg">#76B82A</color>
+    <color name="ok_bg">#1D2E09</color>
+    <color name="warn_fg">#F7A600</color>
     <color name="warn_bg">#261600</color>
-    <color name="unset_fg">#999999</color>
+    <color name="unset_fg">#878787</color>
     <color name="unset_bg">#1F1F1F</color>
     <color name="duplicate_fg">#FF00FF</color>
 </resources>

@@ -15,4 +15,12 @@
     <string name="scanner_static_show">"Show: "</string>
     <string name="scanner_static_starts_in">"Show starts in "</string>
     <string name="scanner_undefined">LOADING</string>
+    <string name="feedback">Feedback</string>
+    <string name="beta">BETA!</string>
+    <string name="dear_employee_title">Hi,</string>
+    <string name="dear_employee_body">this app is currently under developement. If you encounter any issues or get any ideas for function this app lacks, please use the feedback button / email me at itoncek@itoncek.space. Thanks for your help testing this application 💙</string>
+    <string name="iqlandia" translatable="false">iQLandia</string>
+    <string name="iqplanet" translatable="false">iQPlanetárium</string>
+    <string name="iqpark" translatable="false">iQPark</string>
+    <string name="iqfab" translatable="false">iQFabLab</string>
 </resources>

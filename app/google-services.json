@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "716439004598",
+    "project_id": "iqscanner-iql",
+    "storage_bucket": "iqscanner-iql.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716439004598:android:05ec922aa8ac8e9ea38d17",
+        "android_client_info": {
+          "package_name": "cz.iqlandia.iqplanetarium.scanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlrrRfkK3cTWJ7BoomnQ92TD5SLYqEMQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

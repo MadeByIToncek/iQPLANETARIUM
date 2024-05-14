@@ -110,6 +110,7 @@ public class ScannerActivity extends AppCompatActivity {
             Row r = Row.getRow(row);
             seat.forEach((id, state)-> {
                 ImageView img = getSeat(r, id);
+
                 switch (state) {
                     case EMTPY:
                         img.setColorFilter(ContextCompat.getColor(this, R.color.ok_fg), android.graphics.PorterDuff.Mode.SRC_IN);break;

@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,19 +17,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.CompletableFuture;
+import com.google.firebase.appdistribution.FirebaseAppDistribution;
 
-import cz.iqlandia.iqplanetarium.api.DayShowsInfo;
-import cz.iqlandia.iqplanetarium.api.IQApi;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int REQUEST_CAMERA = 1;
     public static MainActivity activity;
-    private static LocalDate date = LocalDate.now();
-
+    private static final int REQUEST_CAMERA = 1;
+    private static Timer timer = new Timer("Time updater");
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,79 +45,60 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        generateButtons();
-        checkPermissions();
-        updateList();
-    }
-
-    private void generateButtons() {
-        ImageButton back = findViewById(R.id.bck);
-        back.setOnClickListener((c)->{
-            date = date.minusDays(1);
-            updateList();
-        });
-
-        ImageButton fwd = findViewById(R.id.fwd);
-        fwd.setOnClickListener((c)->{
-            date = date.plusDays(1);
-            updateList();
-        });
-    }
-
-    private void updateList() {
-        CompletableFuture.supplyAsync(() -> {
-            try {
-                return IQApi.getShowInfoForDateCached(date);
-            } catch (IOException e) {
+        Thread t = new Thread(() -> {
+            if(!networkCheck()) {
                 runOnUiThread(()-> {
                     Intent offline = new Intent(activity, Offline.class);
                     this.startActivity(offline);
                 });
-                return null;
             }
-        }).thenAccept((info) -> {
-            Log.d("updateList()", "Initializing linear layout update");
-            LinearLayout scroll = findViewById(R.id.scroll);
-            Log.d("updateList()", "Clearing linear layout");
-            runOnUiThread(() -> {
-                scroll.removeAllViews();
-                Log.d("updateList()", "Linear layout cleared");
+        });
+        t.start();
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
-                if (info == null) {
-                    Log.d("updateList()", "Info is null, throwing");
-                    showError();
-                } else {
-                    Log.d("updateList()", "Info is not null, generating new view");
-                    generateList(info);
-                }
+        checkPermissions();
+        scheduleUpdater();
+    }
 
-                ((TextView)findViewById(R.id.date)).setText(date.format(DateTimeFormatter.ISO_LOCAL_DATE));
+    private void setupButtons() {
+        ImageButton feedback = findViewById(R.id.iqfeedback);
+        ImageButton iqlandia = findViewById(R.id.iqlandia);
+        ImageButton iqplanetarium = findViewById(R.id.iqplanetarium);
+        ImageButton iqpark = findViewById(R.id.iqpark);
+        ImageButton iqfablab = findViewById(R.id.iqfablab);
 
+        iqlandia.setOnClickListener(c -> Toast.makeText(activity, "Not yet ready", Toast.LENGTH_SHORT).show());
+        iqplanetarium.setOnClickListener(c ->  {
+            runOnUiThread(()-> {
+                Intent offline = new Intent(activity, PlanetariumShowlistActivity.class);
+                this.startActivity(offline);
             });
         });
-
+        iqpark.setOnClickListener(c -> Toast.makeText(activity, "Not yet ready", Toast.LENGTH_SHORT).show());
+        iqfablab.setOnClickListener(c -> Toast.makeText(activity, "Not yet ready", Toast.LENGTH_SHORT).show());
+        feedback.setOnClickListener((c) -> FirebaseAppDistribution.getInstance().startFeedback("Submit feedback :)"));
     }
 
-    private void generateList(DayShowsInfo info) {
-        for (DayShowsInfo.Event event : info.events) {
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("showID", event);
-
-            getSupportFragmentManager().beginTransaction()
-                    .setReorderingAllowed(true)
-                    .add(R.id.scroll, MainCardFragment.class, bundle)
-                    .commit();
-
-        }
+    private void scheduleUpdater() {
+        stopAndResetTimer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                String time = LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute() + ":" + LocalDateTime.now().getSecond();
+                runOnUiThread(()-> ((TextView)findViewById(R.id.time)).setText(time));
+            }
+        }, 0, 1000);
     }
 
-    private void showError() {
-        getSupportFragmentManager().beginTransaction()
-                .setReorderingAllowed(true)
-                .add(R.id.scroll, ErrorCardFragment.class,new Bundle())
-                .commit();
+    private void stopAndResetTimer() {
+        timer.purge();
+        timer.cancel();
+        timer = new Timer("Time updater");
     }
-
 
     private void checkPermissions() {
         String permission = android.Manifest.permission.CAMERA;
@@ -141,5 +121,31 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        scheduleUpdater();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopAndResetTimer();
+    }
+
+    public boolean networkCheck() {
+        try {
+            HttpURLConnection urlc = (HttpURLConnection) (new URL("https://iqlandia.cz").openConnection());
+            urlc.setRequestProperty("User-Agent", "Test");
+            urlc.setRequestProperty("Connection", "close");
+            urlc.setConnectTimeout(1500);
+            urlc.connect();
+            Log.i("Network found", urlc.getResponseCode() + "");
+            return (urlc.getResponseCode() == 200);
+        } catch (IOException e) {
+            return false;
+        }
     }
 }

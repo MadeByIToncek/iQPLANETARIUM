@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         checkPermissions();
         scheduleUpdater();
+        setupButtons();
     }
 
     private void setupButtons() {
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                String time = LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute() + ":" + LocalDateTime.now().getSecond();
+                String time = String.format(Locale.ENGLISH,"%02d:%02d:%02d",LocalDateTime.now().getHour(), LocalDateTime.now().getMinute(),LocalDateTime.now().getSecond());
                 runOnUiThread(()-> ((TextView)findViewById(R.id.time)).setText(time));
             }
         }, 0, 1000);

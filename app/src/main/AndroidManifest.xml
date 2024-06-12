@@ -25,6 +25,8 @@
         <activity
             android:name=".ScannerActivity"
             android:exported="false" />
+        <activity android:name=".PlanetariumShowlistActivity"
+            android:exported="false" />
         <activity android:name=".Offline"
             android:exported="false" />
         <activity

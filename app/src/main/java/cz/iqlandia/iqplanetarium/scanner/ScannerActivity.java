@@ -215,18 +215,18 @@ public class ScannerActivity extends AppCompatActivity {
         scannerView.setCropRatio(.75f);
         scannerView.setOnBarcodeListener(result -> {
             if (!result.getText().equals(last)) {
-
+                StatusColor color = StatusColor.READY;
                 switch (result.getText()) {
                     case "VALID_TICKET":
-                        recolor(StatusColor.ACCEPT);
-                        v.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+                        color = StatusColor.ACCEPT;
+                        v.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
                         break;
                     case "DUPLICATE_TICKET":
-                        recolor(StatusColor.DUPLICITY);
+                        color = StatusColor.DUPLICITY;
                         v.vibrate(VibrationEffect.createOneShot(425, VibrationEffect.DEFAULT_AMPLITUDE));
                         break;
                     case "INVALID_TICKET":
-                        recolor(StatusColor.ERROR);
+                        color = StatusColor.ERROR;
                         v.vibrate(VibrationEffect.createOneShot(750, VibrationEffect.DEFAULT_AMPLITUDE));
                         break;
                 }
@@ -235,9 +235,10 @@ public class ScannerActivity extends AppCompatActivity {
                 resetThread.purge();
 
                 resetThread = new Timer();
-                resetThread.schedule(generateResetThread(), 5000);
+                resetThread.schedule(generateResetThread(color), 5000);
 
                 last = result.getText();
+                recolor(color);
             }
             return true;
         });
@@ -248,10 +249,13 @@ public class ScannerActivity extends AppCompatActivity {
         recolor(StatusColor.READY);
     }
 
-    private TimerTask generateResetThread() {
+    private TimerTask generateResetThread(StatusColor color) {
         return new TimerTask() {
             @Override
             public void run() {
+                if(status == color) {
+                    last = "";
+                }
                 recolor(StatusColor.READY);
             }
         };

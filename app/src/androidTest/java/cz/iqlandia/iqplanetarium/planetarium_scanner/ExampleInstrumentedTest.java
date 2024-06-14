@@ -1,4 +1,4 @@
-package cz.iqlandia.iqplanetarium.scanner;
+package cz.iqlandia.iqplanetarium.planetarium_scanner;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("cz.iqlandia.iqplanetarium.scanner", appContext.getPackageName());
+        assertEquals("cz.iqlandia.iqplanetarium.planetarium_scanner", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package cz.iqlandia.iqplanetarium.api;
+package cz.iqlandia.iqplanetarium.scanner.api;
 
 import android.util.Log;
 

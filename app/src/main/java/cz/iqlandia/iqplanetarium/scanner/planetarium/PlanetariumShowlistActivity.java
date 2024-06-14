@@ -1,6 +1,4 @@
-package cz.iqlandia.iqplanetarium.scanner;
-
-import static cz.iqlandia.iqplanetarium.scanner.MainActivity.activity;
+package cz.iqlandia.iqplanetarium.scanner.planetarium;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -25,8 +23,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.CompletableFuture;
 
-import cz.iqlandia.iqplanetarium.api.DayShowsInfo;
-import cz.iqlandia.iqplanetarium.api.IQApi;
+import cz.iqlandia.iqplanetarium.scanner.R;
+import cz.iqlandia.iqplanetarium.scanner.api.DayShowsInfo;
+import cz.iqlandia.iqplanetarium.scanner.api.IQApi;
+import cz.iqlandia.iqplanetarium.scanner.disambiguation.MainActivity;
+import cz.iqlandia.iqplanetarium.scanner.disambiguation.Offline;
 
 public class PlanetariumShowlistActivity extends AppCompatActivity {
     private static LocalDate date = LocalDate.now();
@@ -74,7 +75,7 @@ public class PlanetariumShowlistActivity extends AppCompatActivity {
                 return IQApi.getShowInfoForDateCached(date);
             } catch (IOException e) {
                 runOnUiThread(()-> {
-                    Intent offline = new Intent(activity, Offline.class);
+                    Intent offline = new Intent(MainActivity.activity, Offline.class);
                     this.startActivity(offline);
                 });
                 return null;

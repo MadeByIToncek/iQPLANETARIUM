@@ -6,12 +6,14 @@
  * All rights reserved to IToncek
  */
 
-package cz.iqlandia.iqplanetarium.scanner;
+package cz.iqlandia.iqplanetarium.scanner.disambiguation;
 
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import cz.iqlandia.iqplanetarium.scanner.R;
 
 public class Offline extends AppCompatActivity {
 

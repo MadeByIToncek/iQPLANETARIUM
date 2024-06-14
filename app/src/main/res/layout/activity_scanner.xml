@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".disambiguation.MainActivity">
 
     <de.markusfisch.android.barcodescannerview.widget.BarcodeScannerView
         android:id="@+id/barcode_scanner_view"

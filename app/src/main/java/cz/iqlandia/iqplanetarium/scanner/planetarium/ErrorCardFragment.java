@@ -1,4 +1,4 @@
-package cz.iqlandia.iqplanetarium.scanner;
+package cz.iqlandia.iqplanetarium.scanner.planetarium;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import cz.iqlandia.iqplanetarium.scanner.R;
 
 public class ErrorCardFragment extends Fragment {
 

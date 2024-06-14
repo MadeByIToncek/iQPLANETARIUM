@@ -1,4 +1,4 @@
-package cz.iqlandia.iqplanetarium.scanner;
+package cz.iqlandia.iqplanetarium.planetarium_scanner;
 
 import org.junit.Test;
 

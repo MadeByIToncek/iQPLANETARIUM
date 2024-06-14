@@ -1,6 +1,4 @@
-package cz.iqlandia.iqplanetarium.scanner;
-
-import static cz.iqlandia.iqplanetarium.scanner.MainActivity.activity;
+package cz.iqlandia.iqplanetarium.scanner.planetarium;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +13,9 @@ import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
-import cz.iqlandia.iqplanetarium.api.DayShowsInfo;
+import cz.iqlandia.iqplanetarium.scanner.R;
+import cz.iqlandia.iqplanetarium.scanner.api.DayShowsInfo;
+import cz.iqlandia.iqplanetarium.scanner.disambiguation.MainActivity;
 
 public class MainCardFragment extends Fragment {
 
@@ -59,7 +59,7 @@ public class MainCardFragment extends Fragment {
             Bundle bundle = new Bundle();
             bundle.putSerializable("showID", event);
             i.putExtra("bundle", bundle);
-            activity.startActivity(i);
+            MainActivity.activity.startActivity(i);
         });
 
         return v;

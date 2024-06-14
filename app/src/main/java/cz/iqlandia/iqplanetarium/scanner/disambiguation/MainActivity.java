@@ -1,4 +1,4 @@
-package cz.iqlandia.iqplanetarium.scanner;
+package cz.iqlandia.iqplanetarium.scanner.disambiguation;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -26,6 +26,9 @@ import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import cz.iqlandia.iqplanetarium.scanner.planetarium.PlanetariumShowlistActivity;
+import cz.iqlandia.iqplanetarium.scanner.R;
 
 public class MainActivity extends AppCompatActivity {
     public static MainActivity activity;

@@ -1,6 +1,4 @@
-package cz.iqlandia.iqplanetarium.scanner;
-
-import static cz.iqlandia.iqplanetarium.scanner.MainActivity.activity;
+package cz.iqlandia.iqplanetarium.scanner.planetarium;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +27,9 @@ import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import cz.iqlandia.iqplanetarium.api.DayShowsInfo;
+import cz.iqlandia.iqplanetarium.scanner.R;
+import cz.iqlandia.iqplanetarium.scanner.api.DayShowsInfo;
+import cz.iqlandia.iqplanetarium.scanner.disambiguation.MainActivity;
 import de.markusfisch.android.barcodescannerview.widget.BarcodeScannerView;
 import de.markusfisch.android.zxingcpp.ZxingCpp;
 
@@ -91,16 +91,16 @@ public class ScannerActivity extends AppCompatActivity {
             CardView bottom_card = findViewById(R.id.bottom_card);
             ImageButton return_button = findViewById(R.id.back);
 
-            title1.setTextColor(ContextCompat.getColor(activity, status.foreground));
+            title1.setTextColor(ContextCompat.getColor(MainActivity.activity, status.foreground));
             title1.setText(c.textR);
-            name1.setTextColor(ContextCompat.getColor(activity, status.foreground));
-            name2.setTextColor(ContextCompat.getColor(activity, status.foreground));
-            start1.setTextColor(ContextCompat.getColor(activity, status.foreground));
-            start2.setTextColor(ContextCompat.getColor(activity, status.foreground));
-            top_card.setCardBackgroundColor(ContextCompat.getColor(activity, status.background));
-            bottom_card.setCardBackgroundColor(ContextCompat.getColor(activity, status.background));
+            name1.setTextColor(ContextCompat.getColor(MainActivity.activity, status.foreground));
+            name2.setTextColor(ContextCompat.getColor(MainActivity.activity, status.foreground));
+            start1.setTextColor(ContextCompat.getColor(MainActivity.activity, status.foreground));
+            start2.setTextColor(ContextCompat.getColor(MainActivity.activity, status.foreground));
+            top_card.setCardBackgroundColor(ContextCompat.getColor(MainActivity.activity, status.background));
+            bottom_card.setCardBackgroundColor(ContextCompat.getColor(MainActivity.activity, status.background));
 
-            return_button.setBackgroundTintList(ContextCompat.getColorStateList(activity,status.background));
+            return_button.setBackgroundTintList(ContextCompat.getColorStateList(MainActivity.activity,status.background));
             return_button.setColorFilter(ContextCompat.getColor(this, status.foreground));
         });
     }

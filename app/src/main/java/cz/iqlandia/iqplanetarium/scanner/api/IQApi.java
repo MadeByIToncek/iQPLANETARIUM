@@ -49,10 +49,6 @@ public class IQApi {
         }
     }
 
-    public static void clearCache() {
-        cache.clear();
-    }
-
     public static @Nullable DayShowsInfo getShowInfoForDate(@NotNull LocalDate date) throws IOException {
         try {
 //            Log.d("IQApi", "Getting show info for date: " + date.format(DateTimeFormatter.ISO_LOCAL_DATE));

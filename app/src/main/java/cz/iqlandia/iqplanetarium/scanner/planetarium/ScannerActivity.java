@@ -62,7 +62,7 @@ public class ScannerActivity extends AppCompatActivity {
 
     private void updateDetails() {
         //Finding modifiable titles
-        TextView title = findViewById(R.id.show_title);
+//        TextView title = findViewById(R.id.show_title);
         TextView name = findViewById(R.id.show_name);
         TextView startsIn = findViewById(R.id.show_starts_in);
 
@@ -290,15 +290,6 @@ public class ScannerActivity extends AppCompatActivity {
 
             return insets;
         });
-    }
-
-
-    private void checkPermissions() {
-        String permission = android.Manifest.permission.CAMERA;
-        if (checkSelfPermission(permission) !=
-                PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{permission}, REQUEST_CAMERA);
-        }
     }
 
     @Override

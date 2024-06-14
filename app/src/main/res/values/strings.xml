@@ -7,7 +7,7 @@
     <string name="scanner_dupl">POSSIBLE DUPLICITY</string>
     <string name="exit" translatable="false">⬅</string>
     <string name="loading">Loading…</string>
-    <string name="not_speakable" >This element has no text attached</string>
+    <string name="not_speakable">This element has no text attached</string>
     <string name="enter_scanmode">Enter scan mode</string>
     <string name="error_title">NOT FOUND</string>
     <string name="error_subtitle">I swear there was something there…</string>
@@ -22,5 +22,5 @@
     <string name="iqlandia" translatable="false">iQLandia</string>
     <string name="iqplanet" translatable="false">iQPlanetárium</string>
     <string name="iqpark" translatable="false">iQPark</string>
-    <string name="iqfab" translatable="false">iQFabLab</string>
+    <string name="iqtally" translatable="false">iQTallyClient</string>
 </resources>

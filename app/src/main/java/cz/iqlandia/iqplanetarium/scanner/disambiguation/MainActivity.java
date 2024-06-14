@@ -29,6 +29,7 @@ import java.util.TimerTask;
 
 import cz.iqlandia.iqplanetarium.scanner.planetarium.PlanetariumShowlistActivity;
 import cz.iqlandia.iqplanetarium.scanner.R;
+import cz.iqlandia.iqplanetarium.scanner.tally.TallyActivity;
 
 public class MainActivity extends AppCompatActivity {
     public static MainActivity activity;
@@ -74,17 +75,18 @@ public class MainActivity extends AppCompatActivity {
         ImageButton iqlandia = findViewById(R.id.iqlandia);
         ImageButton iqplanetarium = findViewById(R.id.iqplanetarium);
         ImageButton iqpark = findViewById(R.id.iqpark);
-        ImageButton iqfablab = findViewById(R.id.iqfablab);
+        ImageButton iqtally = findViewById(R.id.iqtallyclient);
 
         iqlandia.setOnClickListener(c -> Toast.makeText(activity, "Not yet ready", Toast.LENGTH_SHORT).show());
-        iqplanetarium.setOnClickListener(c ->  {
-            runOnUiThread(()-> {
-                Intent offline = new Intent(activity, PlanetariumShowlistActivity.class);
-                this.startActivity(offline);
-            });
-        });
+        iqplanetarium.setOnClickListener(c -> runOnUiThread(()-> {
+            Intent offline = new Intent(activity, PlanetariumShowlistActivity.class);
+            this.startActivity(offline);
+        }));
         iqpark.setOnClickListener(c -> Toast.makeText(activity, "Not yet ready", Toast.LENGTH_SHORT).show());
-        iqfablab.setOnClickListener(c -> Toast.makeText(activity, "Not yet ready", Toast.LENGTH_SHORT).show());
+        iqtally.setOnClickListener(c -> runOnUiThread(()-> {
+            Intent offline = new Intent(activity, TallyActivity.class);
+            this.startActivity(offline);
+        }));
         feedback.setOnClickListener((c) -> FirebaseAppDistribution.getInstance().startFeedback("Submit feedback :)"));
     }
 
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                String time = String.format(Locale.ENGLISH,"%02d:%02d:%02d",LocalDateTime.now().getHour(), LocalDateTime.now().getMinute(),LocalDateTime.now().getSecond());
+                String time = String.format(Locale.getDefault(),"%02d:%02d:%02d",LocalDateTime.now().getHour(), LocalDateTime.now().getMinute(),LocalDateTime.now().getSecond());
                 runOnUiThread(()-> ((TextView)findViewById(R.id.time)).setText(time));
             }
         }, 0, 1000);

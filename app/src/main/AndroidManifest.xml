@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -23,11 +22,16 @@
         android:theme="@style/Theme.IQScanner"
         tools:targetApi="31">
         <activity
+            android:name=".tally.TallyActivity"
+            android:exported="false" />
+        <activity
             android:name=".planetarium.ScannerActivity"
             android:exported="false" />
-        <activity android:name=".planetarium.PlanetariumShowlistActivity"
+        <activity
+            android:name=".planetarium.PlanetariumShowlistActivity"
             android:exported="false" />
-        <activity android:name=".disambiguation.Offline"
+        <activity
+            android:name=".disambiguation.Offline"
             android:exported="false" />
         <activity
             android:name=".disambiguation.MainActivity"

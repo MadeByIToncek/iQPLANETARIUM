@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/background"
+    android:background="@color/deep_blue"
     tools:context=".disambiguation.MainActivity">
 
     <TextView
@@ -79,7 +79,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/background"
+            android:background="@color/unset_bg"
             android:contentDescription="@string/not_speakable"
             android:paddingLeft="8dp"
             android:paddingTop="16dp"
@@ -91,20 +91,20 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/iq_blue" />
+            app:srcCompat="@drawable/iq_grey" />
 
         <ImageButton
             android:id="@+id/iqplanetarium"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/warn_bg"
+            android:contentDescription="@string/not_speakable"
             android:cropToPadding="false"
             android:paddingLeft="8dp"
             android:paddingTop="16dp"
             android:paddingRight="8dp"
             android:paddingBottom="40dp"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/not_speakable"
             app:layout_constraintBottom_toBottomOf="@+id/iqlandia"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iqlandia"
@@ -117,37 +117,37 @@
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/ok_bg"
+            android:background="@color/unset_bg"
+            android:contentDescription="@string/not_speakable"
             android:paddingLeft="8dp"
             android:paddingTop="16dp"
             android:paddingRight="8dp"
             android:paddingBottom="40dp"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/not_speakable"
             app:layout_constraintBottom_toTopOf="@+id/iqfeedback"
             app:layout_constraintEnd_toStartOf="@+id/iqtallyclient"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/iqlandia"
             app:layout_constraintTop_toBottomOf="@+id/iqlandia"
-            app:srcCompat="@drawable/iq_green" />
+            app:srcCompat="@drawable/iq_grey" />
 
         <ImageButton
             android:id="@+id/iqtallyclient"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/err_bg"
+            android:background="@color/unset_bg"
+            android:contentDescription="@string/not_speakable"
             android:cropToPadding="false"
             android:paddingLeft="8dp"
             android:paddingTop="16dp"
             android:paddingRight="8dp"
             android:paddingBottom="40dp"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/not_speakable"
             app:layout_constraintBottom_toBottomOf="@+id/iqpark"
             app:layout_constraintEnd_toEndOf="@+id/iqplanetarium"
             app:layout_constraintStart_toEndOf="@+id/iqpark"
             app:layout_constraintTop_toTopOf="@+id/iqpark"
-            app:srcCompat="@drawable/iq_red"/>
+            app:srcCompat="@drawable/iq_grey" />
 
 
         <ImageButton
@@ -155,19 +155,19 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:background="@color/unset_bg"
+            android:background="@color/background"
+            android:contentDescription="@string/not_speakable"
             android:paddingLeft="8dp"
             android:paddingTop="16dp"
             android:paddingRight="8dp"
             android:paddingBottom="40dp"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/not_speakable"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/iqpark"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/iqpark"
             app:layout_constraintTop_toBottomOf="@+id/iqpark"
-            app:srcCompat="@drawable/iq_grey" />
+            app:srcCompat="@drawable/iq_blue" />
 
         <TextView
             android:id="@+id/iql_label"
@@ -224,5 +224,23 @@
             app:layout_constraintEnd_toEndOf="@+id/iqfeedback"
             app:layout_constraintStart_toStartOf="@+id/iqfeedback" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/secret_button"
+        android:layout_width="80dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/err_bg"
+        android:backgroundTintMode="src_in"
+        android:clickable="true"
+        android:text="@string/secret_button"
+        android:textColor="@color/err_fg"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:cornerRadius="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/time"
+        app:layout_constraintTop_toTopOf="@+id/time" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

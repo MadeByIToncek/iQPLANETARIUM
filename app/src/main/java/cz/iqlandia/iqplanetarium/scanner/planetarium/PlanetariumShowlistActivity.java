@@ -53,13 +53,13 @@ public class PlanetariumShowlistActivity extends AppCompatActivity {
 
     private void generateButtons() {
         ImageButton back = findViewById(R.id.bck);
-        back.setOnClickListener((c)->{
+        back.setOnClickListener((c) -> {
             date = date.minusDays(1);
             updateList();
         });
 
         ImageButton fwd = findViewById(R.id.fwd);
-        fwd.setOnClickListener((c)->{
+        fwd.setOnClickListener((c) -> {
             date = date.plusDays(1);
             updateList();
         });
@@ -74,7 +74,7 @@ public class PlanetariumShowlistActivity extends AppCompatActivity {
             try {
                 return IQApi.getShowInfoForDateCached(date);
             } catch (IOException e) {
-                runOnUiThread(()-> {
+                runOnUiThread(() -> {
                     Intent offline = new Intent(MainActivity.activity, Offline.class);
                     this.startActivity(offline);
                 });
@@ -96,7 +96,7 @@ public class PlanetariumShowlistActivity extends AppCompatActivity {
                     generateList(info);
                 }
 
-                ((TextView)findViewById(R.id.date)).setText(date.format(DateTimeFormatter.ISO_LOCAL_DATE));
+                ((TextView) findViewById(R.id.date)).setText(date.format(DateTimeFormatter.ISO_LOCAL_DATE));
 
             });
         });
@@ -119,7 +119,7 @@ public class PlanetariumShowlistActivity extends AppCompatActivity {
     private void showError() {
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.scroll, ErrorCardFragment.class,new Bundle())
+                .add(R.id.scroll, ErrorCardFragment.class, new Bundle())
                 .commit();
     }
 }

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/deep_blue"
     tools:context=".disambiguation.MainActivity">
 
     <de.markusfisch.android.barcodescannerview.widget.BarcodeScannerView

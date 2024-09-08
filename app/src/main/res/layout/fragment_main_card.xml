@@ -7,11 +7,10 @@
     tools:context=".MainCardFragment">
 
 
-
     <ImageView
-        android:contentDescription="@string/not_speakable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/not_speakable"
         android:src="@drawable/empty_space"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

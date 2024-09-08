@@ -18,12 +18,14 @@ public class DayShowsInfo {
         this.status = status;
         this.events = events;
     }
+
     public enum Status {
         SUCCESS("success"),
         ERROR("error"),
         UNKNOWN("unknown");
 
         public final String status;
+
         Status(String status) {
             this.status = status;
         }
@@ -31,7 +33,7 @@ public class DayShowsInfo {
         @NonNull
         public static Status getStatus(@NonNull String status) {
             for (Status value : Status.values()) {
-                if(value.status.equals(status)) {
+                if (value.status.equals(status)) {
                     return value;
                 }
             }
@@ -78,9 +80,9 @@ public class DayShowsInfo {
 
         @Override
         public int compareTo(Event o) {
-            if(o.start.isBefore(this.start)) {
+            if (o.start.isBefore(this.start)) {
                 return 1;
-            } else if(o.start.equals(this.start)) {
+            } else if (o.start.equals(this.start)) {
                 return 0;
             } else {
                 return -1;
@@ -88,23 +90,24 @@ public class DayShowsInfo {
         }
 
 
-        public static class Prices implements Serializable{
-            public final int ID;
-            @NonNull
-            public final String name;
-            public final int price;
-            public Prices(int ID, @NonNull String name, int price) {
-                this.ID = ID;
-                this.name = name;
-                this.price = price;
-            }
-        }
-
         public enum SeatState implements Serializable {
             EMTPY,
             OCCUPIED,
             ENTRY_ALLOWED,
             POSSIBLE_DUPLICATE
+        }
+
+        public static class Prices implements Serializable {
+            public final int ID;
+            @NonNull
+            public final String name;
+            public final int price;
+
+            public Prices(int ID, @NonNull String name, int price) {
+                this.ID = ID;
+                this.name = name;
+                this.price = price;
+            }
         }
     }
 }

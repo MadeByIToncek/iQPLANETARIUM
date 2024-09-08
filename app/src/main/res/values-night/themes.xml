@@ -3,5 +3,6 @@
     <style name="Base.Theme.IQScanner" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <item name="colorPrimary">@color/background</item>
+        <item name="backgroundColor">@color/background</item>
     </style>
 </resources>

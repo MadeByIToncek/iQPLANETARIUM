@@ -4,14 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -24,17 +27,35 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import cz.iqlandia.iqplanetarium.scanner.planetarium.PlanetariumShowlistActivity;
 import cz.iqlandia.iqplanetarium.scanner.R;
-import cz.iqlandia.iqplanetarium.scanner.tally.TallyActivity;
+import cz.iqlandia.iqplanetarium.scanner.planetarium.PlanetariumShowlistActivity;
 
 public class MainActivity extends AppCompatActivity {
-    public static MainActivity activity;
     private static final int REQUEST_CAMERA = 1;
+    private static final int[] messages = {
+            R.string.unhinged_message_1,
+            R.string.unhinged_message_2,
+            R.string.unhinged_message_3,
+            R.string.unhinged_message_4,
+            R.string.unhinged_message_5,
+            R.string.unhinged_message_6,
+            R.string.unhinged_message_7,
+            R.string.unhinged_message_8,
+            R.string.unhinged_message_9,
+            R.string.unhinged_message_10,
+            R.string.unhinged_message_11,
+            R.string.unhinged_message_12,
+            R.string.unhinged_message_13,
+            R.string.unhinged_message_14,
+            R.string.unhinged_message_15};
+    private static final Random r = new Random(System.currentTimeMillis());
+    public static MainActivity activity;
     private static Timer timer = new Timer("Time updater");
+
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Thread t = new Thread(() -> {
-            if(!networkCheck()) {
-                runOnUiThread(()-> {
+            if (!networkCheck()) {
+                runOnUiThread(() -> {
                     Intent offline = new Intent(activity, Offline.class);
                     this.startActivity(offline);
                 });
@@ -77,17 +98,39 @@ public class MainActivity extends AppCompatActivity {
         ImageButton iqpark = findViewById(R.id.iqpark);
         ImageButton iqtally = findViewById(R.id.iqtallyclient);
 
-        iqlandia.setOnClickListener(c -> Toast.makeText(activity, "Not yet ready", Toast.LENGTH_SHORT).show());
-        iqplanetarium.setOnClickListener(c -> runOnUiThread(()-> {
+        iqlandia.setOnClickListener(c -> Toast.makeText(activity, getMessage(), Toast.LENGTH_SHORT).show());
+        iqplanetarium.setOnClickListener(c -> runOnUiThread(() -> {
             Intent offline = new Intent(activity, PlanetariumShowlistActivity.class);
             this.startActivity(offline);
         }));
-        iqpark.setOnClickListener(c -> Toast.makeText(activity, "Not yet ready", Toast.LENGTH_SHORT).show());
-        iqtally.setOnClickListener(c -> runOnUiThread(()-> {
-            Intent offline = new Intent(activity, TallyActivity.class);
-            this.startActivity(offline);
-        }));
-        feedback.setOnClickListener((c) -> FirebaseAppDistribution.getInstance().startFeedback("Submit feedback :)"));
+        iqpark.setOnClickListener(c -> Toast.makeText(activity, getMessage(), Toast.LENGTH_SHORT).show());
+        iqtally.setOnClickListener(c -> Toast.makeText(activity, getMessage(), Toast.LENGTH_SHORT).show());
+        feedback.setOnClickListener((c) -> FirebaseAppDistribution.getInstance().startFeedback("Home screen feedback"));
+    }
+
+    private int getMessage() {
+        //if (69 == 69) {
+        if (r.nextInt(100) == 69) {
+            findViewById(R.id.secret_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.secret_button).setClickable(true);
+            findViewById(R.id.secret_button).setOnClickListener(c -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setPositiveButton("Yeah, sure", (dialog, id) -> {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/dQw4w9WgXcQ"));
+                    startActivity(browserIntent);
+                    dialog.dismiss();
+                });
+                builder.setNegativeButton("Nah, Go back to work", (dialog, id) -> {
+                    dialog.dismiss();
+                });
+                builder.setMessage("You've stumbled across a hidden button. Wanna press it")
+                        .setTitle("Oh!");
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            });
+        }
+        return messages[r.nextInt(messages.length)];
     }
 
 
@@ -96,8 +139,8 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                String time = String.format(Locale.getDefault(),"%02d:%02d:%02d",LocalDateTime.now().getHour(), LocalDateTime.now().getMinute(),LocalDateTime.now().getSecond());
-                runOnUiThread(()-> ((TextView)findViewById(R.id.time)).setText(time));
+                String time = String.format(Locale.getDefault(), "%02d:%02d:%02d", LocalDateTime.now().getHour(), LocalDateTime.now().getMinute(), LocalDateTime.now().getSecond());
+                runOnUiThread(() -> ((TextView) findViewById(R.id.time)).setText(time));
             }
         }, 0, 1000);
     }

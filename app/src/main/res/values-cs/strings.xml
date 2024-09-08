@@ -13,9 +13,9 @@
     <string name="offline_title">Nepřipojeno!</string>
     <string name="scanner_static_show">"Pořad: "</string>
     <string name="scanner_static_starts_in">"Pořad začíná za "</string>
-    <string name="scanner_dupl">DUPLICITA?</string>
+    <string name="scanner_dupl">OPAKOVANÉ NAČTENÍ</string>
     <string name="scanner_undefined">PŘIPRAVOVÁNÍ</string>
-    <string name="feedback">Feedback</string>
+    <string name="feedback">Zpětná vazba</string>
     <string name="beta">BETA!</string>
     <string name="dear_employee_title">Zdravím,</string>
     <string name="dear_employee_body">tato aplikace je stále ve vývoji. Pokud narazíte na jakékoli potíže nebo vás napadne nějaká funkce, která by se do aplikace hodila, neváhejte využít tlačítka \"Zpětná vazba\" nebo mi napište email na itoncek@itoncek.space. Děkuji že se účastníte testování této aplikace 💙</string>

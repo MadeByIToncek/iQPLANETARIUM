@@ -48,9 +48,9 @@ public class MainCardFragment extends Fragment {
 
         assert event != null;
         ((TextView) v.findViewById(R.id.showTitle)).setText(event.name);
-        ((TextView) v.findViewById(R.id.showDate)).setText(generateShowSpan(event.start,event.end));
+        ((TextView) v.findViewById(R.id.showDate)).setText(generateShowSpan(event.start, event.end));
         ((TextView) v.findViewById(R.id.showDuration)).setText(generateShowDuration(event.start, event.end));
-        ((TextView) v.findViewById(R.id.occupancy)).setText(String.format(Locale.ENGLISH,"%d/%d", event.CurrentCapacity, event.MaxCapacity));
+        ((TextView) v.findViewById(R.id.occupancy)).setText(String.format(Locale.ENGLISH, "%d/%d", event.CurrentCapacity, event.MaxCapacity));
 
         v.findViewById(R.id.enter_scan).setOnClickListener((b) -> {
             // setContentView(R.layout.next_page); this will modify the current activity view
@@ -66,7 +66,7 @@ public class MainCardFragment extends Fragment {
     }
 
     private String generateShowSpan(ZonedDateTime start, ZonedDateTime end) {
-        return String.format(Locale.ENGLISH,"%02d:%02d - %02d:%02d", start.getHour(), start.getMinute(), end.getHour(), end.getMinute());
+        return String.format(Locale.ENGLISH, "%02d:%02d - %02d:%02d", start.getHour(), start.getMinute(), end.getHour(), end.getMinute());
     }
 
     private String generateShowDuration(ZonedDateTime start, ZonedDateTime end) {
@@ -75,10 +75,10 @@ public class MainCardFragment extends Fragment {
         long hours = totalSecs / 3600;
         long minutes = (totalSecs % 3600) / 60;
 
-        if(minutes != 0) {
-            return String.format(Locale.ENGLISH,"(%2dh %02dm)", hours, minutes);
+        if (minutes != 0) {
+            return String.format(Locale.ENGLISH, "(%2dh %02dm)", hours, minutes);
         } else {
-            return String.format(Locale.ENGLISH,"(%dh)", hours);
+            return String.format(Locale.ENGLISH, "(%dh)", hours);
         }
     }
 }

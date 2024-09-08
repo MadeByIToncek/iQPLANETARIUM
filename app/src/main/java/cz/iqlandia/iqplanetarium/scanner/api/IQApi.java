@@ -28,10 +28,11 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class IQApi {
-    private static final HashMap<LocalDate,CachedDayShowsInfo> cache = new HashMap<>();
+    private static final HashMap<LocalDate, CachedDayShowsInfo> cache = new HashMap<>();
+
     public static @Nullable DayShowsInfo getShowInfoForDateCached(@NotNull LocalDate date) throws IOException {
-        if(cache.containsKey(date)) {
-            if(Objects.requireNonNull(cache.get(date)).purgeAt.isAfter(ZonedDateTime.now())) {
+        if (cache.containsKey(date)) {
+            if (Objects.requireNonNull(cache.get(date)).purgeAt.isAfter(ZonedDateTime.now())) {
                 Log.i("ShowCache", "Cache hit");
                 return Objects.requireNonNull(cache.get(date)).info;
             } else {
@@ -123,7 +124,7 @@ public class IQApi {
 
                         for (int k = 0; k < row.getJSONArray("Seats").length(); k++) {
                             JSONObject seat = row.getJSONArray("Seats").getJSONObject(k);
-                            columns.put(Integer.parseInt(seat.getString("Number")), seat.getInt("Status") == 1? DayShowsInfo.Event.SeatState.OCCUPIED : DayShowsInfo.Event.SeatState.EMTPY);
+                            columns.put(Integer.parseInt(seat.getString("Number")), seat.getInt("Status") == 1 ? DayShowsInfo.Event.SeatState.OCCUPIED : DayShowsInfo.Event.SeatState.EMTPY);
                         }
 
                         seats.put(Integer.parseInt(row.getString("Number")), columns);
@@ -142,7 +143,7 @@ public class IQApi {
 
                 }
 
-                if(events.isEmpty()) return null;
+                if (events.isEmpty()) return null;
                 else return new DayShowsInfo(status, events);
             } else {
                 return null;
@@ -157,8 +158,8 @@ public class IQApi {
         final ZonedDateTime purgeAt;
 
         public CachedDayShowsInfo(@Nullable DayShowsInfo info, ZonedDateTime purgeAt) {
-            this.info=info;
-            this.purgeAt=purgeAt;
+            this.info = info;
+            this.purgeAt = purgeAt;
         }
     }
 }

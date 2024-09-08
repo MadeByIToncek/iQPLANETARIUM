@@ -12,4 +12,5 @@
     <color name="unset_fg">#878787</color>
     <color name="unset_bg">#1F1F1F</color>
     <color name="duplicate_fg">#FF00FF</color>
+    <color name="deep_blue">#000021</color>
 </resources>

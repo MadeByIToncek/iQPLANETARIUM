@@ -50,6 +50,7 @@ dependencies {
     implementation libs.firebase.config
     implementation libs.firebase.perf
     implementation libs.firebase.appdistribution.api
+    implementation libs.firebase.firestore
     releaseImplementation libs.firebase.appdistribution
     implementation libs.json
     implementation libs.commons.lang3

@@ -29,6 +29,7 @@ import java.util.TimerTask;
 
 import cz.iqlandia.iqplanetarium.scanner.R;
 import cz.iqlandia.iqplanetarium.scanner.api.DayShowsInfo;
+import cz.iqlandia.iqplanetarium.scanner.api.FirestoreShowStorage;
 import cz.iqlandia.iqplanetarium.scanner.disambiguation.MainActivity;
 import de.markusfisch.android.barcodescannerview.widget.BarcodeScannerView;
 import de.markusfisch.android.zxingcpp.ZxingCpp;
@@ -82,6 +83,12 @@ public class ScannerActivity extends AppCompatActivity {
         updateDetails();
         updateSeats();
         setupScanner();
+    }
+
+    @Override
+    protected void onDestroy() {
+        new FirestoreShowStorage().saveShow(event);
+        super.onDestroy();
     }
 
     private void updateDetails() {
@@ -370,6 +377,7 @@ public class ScannerActivity extends AppCompatActivity {
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
 
     @Override
     public void onResume() {

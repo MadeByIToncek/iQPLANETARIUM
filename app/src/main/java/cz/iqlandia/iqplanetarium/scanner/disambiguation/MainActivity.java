@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
         iqtally.setOnClickListener(c -> Toast.makeText(activity, getMessage(), Toast.LENGTH_SHORT).show());
         feedback.setOnClickListener((c) -> FirebaseAppDistribution.getInstance().startFeedback("Home screen feedback"));
     }
-
+    int counter = 0;
     private int getMessage() {
         //if (69 == 69) {
-        if (r.nextInt(100) == 69) {
+        if (counter++ >= 69) {
             findViewById(R.id.secret_button).setVisibility(View.VISIBLE);
             findViewById(R.id.secret_button).setClickable(true);
             findViewById(R.id.secret_button).setOnClickListener(c -> {
@@ -121,9 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(browserIntent);
                     dialog.dismiss();
                 });
-                builder.setNegativeButton("Nah, Go back to work", (dialog, id) -> {
-                    dialog.dismiss();
-                });
+                builder.setNegativeButton("Nah, Go back to work", (dialog, id) -> dialog.dismiss());
                 builder.setMessage("You've stumbled across a hidden button. Wanna press it")
                         .setTitle("Oh!");
                 AlertDialog dialog = builder.create();

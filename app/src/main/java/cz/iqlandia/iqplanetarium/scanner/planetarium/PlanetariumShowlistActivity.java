@@ -18,12 +18,15 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.appdistribution.FirebaseAppDistribution;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.CompletableFuture;
 
 import cz.iqlandia.iqplanetarium.scanner.R;
+import cz.iqlandia.iqplanetarium.scanner.api.Calendar;
 import cz.iqlandia.iqplanetarium.scanner.api.DayShowsInfo;
 import cz.iqlandia.iqplanetarium.scanner.api.IQApi;
 import cz.iqlandia.iqplanetarium.scanner.disambiguation.MainActivity;
@@ -54,19 +57,59 @@ public class PlanetariumShowlistActivity extends AppCompatActivity {
     private void generateButtons() {
         ImageButton back = findViewById(R.id.bck);
         back.setOnClickListener((c) -> {
-            date = date.minusDays(1);
-            updateList();
+            Thread t = new Thread(() -> {
+                Calendar calendar;
+                try {
+                    calendar = IQApi.getCalendarForMonthCached(date);
+                } catch (IOException | JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                boolean open = false;
+                int day = 0;
+                while (!open) {
+                    if (calendar.isOpenOnDay(date.minusDays(++day))) {
+                        open = true;
+                    }
+                }
+
+                date = date.minusDays(day);
+                runOnUiThread(this::updateList);
+            });
+            t.start();
         });
 
         ImageButton fwd = findViewById(R.id.fwd);
         fwd.setOnClickListener((c) -> {
-            date = date.plusDays(1);
-            updateList();
+            Thread t = new Thread(() -> {
+                runOnUiThread(this::setReloading);
+                Calendar calendar;
+                try {
+                    calendar = IQApi.getCalendarForMonthCached(date);
+                } catch (IOException | JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                boolean open = false;
+                int day = 0;
+                while (!open) {
+                    if (calendar.isOpenOnDay(date.plusDays(++day))) {
+                        open = true;
+                    }
+                }
+                date = date.plusDays(day);
+                runOnUiThread(this::updateList);
+            });
+            t.start();
         });
 
 
         Button feedback = findViewById(R.id.feedback);
         feedback.setOnClickListener((c) -> FirebaseAppDistribution.getInstance().startFeedback("Submit feedback :)"));
+    }
+
+    private void setReloading() {
+        LinearLayout scroll = findViewById(R.id.scroll);
+        scroll.removeAllViews();
+        ((TextView) findViewById(R.id.date)).setText(R.string.loading);
     }
 
     private void updateList() {

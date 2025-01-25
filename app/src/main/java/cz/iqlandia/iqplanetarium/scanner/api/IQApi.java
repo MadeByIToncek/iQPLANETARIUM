@@ -29,6 +29,8 @@ import okhttp3.Response;
 
 public class IQApi {
     private static final HashMap<LocalDate, CachedDayShowsInfo> cache = new HashMap<>();
+    private static final HashMap<LocalDate, CachedCalendar> calcache = new HashMap<>();
+    private static final OkHttpClient client = new OkHttpClient();
 
     public static @Nullable DayShowsInfo getShowInfoForDateCached(@NotNull LocalDate date) throws IOException {
         if (cache.containsKey(date)) {
@@ -51,13 +53,23 @@ public class IQApi {
     }
 
     public static @Nullable DayShowsInfo getShowInfoForDate(@NotNull LocalDate date) throws IOException {
+        DayShowsInfo normal = getShowInfoForDate(date, false);
+        DayShowsInfo special = getShowInfoForDate(date, true);
+
+        if(special != null && normal != null) {
+            normal.events.addAll(special.events);
+        }
+
+        return normal;
+    }
+
+    public static @Nullable DayShowsInfo getShowInfoForDate(@NotNull LocalDate date, boolean special) throws IOException {
         try {
 //            Log.d("IQApi", "Getting show info for date: " + date.format(DateTimeFormatter.ISO_LOCAL_DATE));
-            OkHttpClient client = new OkHttpClient();
 
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("date", date.format(DateTimeFormatter.ISO_LOCAL_DATE));
-            jsonBody.put("type", "normal");
+            jsonBody.put("type", special ? "special" : "normal");
 
             RequestBody requestBody = RequestBody.create(jsonBody.toString(), MediaType.parse("application/json"));
 
@@ -154,12 +166,107 @@ public class IQApi {
         }
     }
 
+    public static Calendar getCalendarForMonth(@NotNull LocalDate date) throws IOException, JSONException {
+        JSONObject normal = getCalendar(date, false);
+        JSONObject special = getCalendar(date, true);
+
+        JSONArray normalArray = normal.getJSONObject("data").getJSONArray("calendar");
+        JSONArray specialArray = special.getJSONObject("data").getJSONArray("calendar");
+
+        HashMap<LocalDate, Boolean> result = new HashMap<>(normalArray.length());
+
+        for (int i = 0; i < normalArray.length(); i++) {
+            JSONObject o = normalArray.getJSONObject(i);
+
+            LocalDate d = LocalDate.parse(o.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            boolean hasEvent = o.getBoolean("has_event");
+
+            //Log.d("normal", d.format(DateTimeFormatter.ISO_LOCAL_DATE) + " is " + hasEvent);
+
+            result.put(d, hasEvent);
+        }
+
+        for (int i = 0; i < specialArray.length(); i++) {
+            JSONObject o = specialArray.getJSONObject(i);
+
+            LocalDate d = LocalDate.parse(o.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            boolean hasEvent = o.getBoolean("has_event");
+
+            //Log.d("special", d.format(DateTimeFormatter.ISO_LOCAL_DATE) + " is " + hasEvent);
+
+            if(result.containsKey(d)) {
+                result.put(d, Boolean.TRUE.equals(result.get(d)) || hasEvent);
+            } else {
+                result.put(d, hasEvent);
+            }
+        }
+
+        return new Calendar(result);
+    }
+
+    static JSONObject getCalendar(LocalDate date, boolean special) throws JSONException, IOException {
+        JSONObject jsonBody = new JSONObject();
+        jsonBody.put("month", date.getMonthValue());
+        jsonBody.put("year", String.valueOf(date.getYear()));
+        jsonBody.put("type", special?"special":"normal");
+
+        RequestBody requestBody = RequestBody.create(jsonBody.toString(), MediaType.parse("application/json"));
+
+        Request request = new Request.Builder()
+                .url("https://api.iqlandia.cz/events/calendar")
+                .post(requestBody)
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        assert response.body() != null;
+        JSONObject resp = new JSONObject(response.body().string());
+
+        response.close();
+        return resp;
+    }
+
+    public static Calendar getCalendarForMonthCached(LocalDate date) throws JSONException, IOException {
+        LocalDate first = LocalDate.of(date.getYear(), date.getMonth(), 1);
+        Log.d("getCalendarCached()", "First day " + first.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        if (calcache.containsKey(first)) {
+            CachedCalendar cc = calcache.get(first);
+            if (cc == null) {
+                Log.d("getCalendarCached()", "Cache dead!");
+                calcache.remove(first);
+                return getCalendarForMonthCached(date);
+            } else if (cc.purgeAt.isBefore(ZonedDateTime.now())) {
+                Log.d("getCalendarCached()", "Cache stale!");
+                calcache.remove(first);
+                return getCalendarForMonthCached(date);
+            } else {
+                Log.d("getCalendarCached()", "Cache hit!");
+                return cc.calendar;
+            }
+        } else {
+            Log.d("getCalendarCached()", "Cache miss!");
+            Calendar c = getCalendarForMonth(first);
+            calcache.put(first, new CachedCalendar(c, ZonedDateTime.now().plusMinutes(5)));
+            return c;
+        }
+    }
+
     public static class CachedDayShowsInfo {
         final @Nullable DayShowsInfo info;
         final ZonedDateTime purgeAt;
 
         public CachedDayShowsInfo(@Nullable DayShowsInfo info, ZonedDateTime purgeAt) {
             this.info = info;
+            this.purgeAt = purgeAt;
+        }
+    }
+
+    private static class CachedCalendar {
+        final Calendar calendar;
+        final ZonedDateTime purgeAt;
+
+        public CachedCalendar(Calendar calendar, ZonedDateTime purgeAt) {
+            this.calendar = calendar;
             this.purgeAt = purgeAt;
         }
     }

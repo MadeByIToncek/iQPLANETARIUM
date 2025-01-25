@@ -57,11 +57,12 @@ public class IQApi {
 
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("date", date.format(DateTimeFormatter.ISO_LOCAL_DATE));
+            jsonBody.put("type", "normal");
 
             RequestBody requestBody = RequestBody.create(jsonBody.toString(), MediaType.parse("application/json"));
 
             Request request = new Request.Builder()
-                    .url("https://api.iqlandia.cz/events/seats-get")
+                    .url("https://api.iqlandia.cz/events/day-detail")
                     .post(requestBody)
                     .build();
 

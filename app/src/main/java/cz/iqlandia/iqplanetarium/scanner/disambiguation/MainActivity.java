@@ -22,16 +22,20 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.appdistribution.FirebaseAppDistribution;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import cz.iqlandia.iqplanetarium.scanner.R;
+import cz.iqlandia.iqplanetarium.scanner.api.IQApi;
+import cz.iqlandia.iqplanetarium.scanner.api.OpeningHours;
 import cz.iqlandia.iqplanetarium.scanner.planetarium.PlanetariumShowlistActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -137,8 +141,19 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                String time = String.format(Locale.getDefault(), "%02d:%02d:%02d", LocalDateTime.now().getHour(), LocalDateTime.now().getMinute(), LocalDateTime.now().getSecond());
-                runOnUiThread(() -> ((TextView) findViewById(R.id.time)).setText(time));
+                String time = String.format(Locale.getDefault(), "%02d:%02d:%02d", ZonedDateTime.now().getHour(), ZonedDateTime.now().getMinute(), ZonedDateTime.now().getSecond());
+                OpeningHours iqlIsOpen;
+                try {
+                    iqlIsOpen = IQApi.isIqlOpenRightNow();
+                } catch (JSONException | IOException e) {
+                    throw new RuntimeException(e);
+                }
+                boolean isFetched = iqlIsOpen != null;
+
+                runOnUiThread(() -> {
+                    ((TextView) findViewById(R.id.time)).setText(time);
+                    ((TextView) findViewById(R.id.time)).setTextColor(getResources().getColor((isFetched?(iqlIsOpen.isOpen(ZonedDateTime.now())?R.color.open:R.color.closed):R.color.unset_fg), getBaseContext().getTheme()));
+                });
             }
         }, 0, 1000);
     }

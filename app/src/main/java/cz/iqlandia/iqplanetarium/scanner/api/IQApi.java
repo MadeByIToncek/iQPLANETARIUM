@@ -251,6 +251,34 @@ public class IQApi {
         }
     }
 
+    public static OpeningHours isIqlOpenRightNow() throws JSONException, IOException {
+        ZonedDateTime dateTime = ZonedDateTime.now();
+        return getOpeningHoursCached(dateTime);
+    }
+
+    private static OpeningHours getOpeningHoursCached(ZonedDateTime dateTime) throws IOException, JSONException {
+        Request request = new Request.Builder()
+                .url("https://iqlandia.cz/objednavka/get_events/82?start=" + dateTime.toEpochSecond() +"&end="+(dateTime.toEpochSecond()+1))
+                .get()
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+        assert response.body() != null;
+        JSONArray resp = new JSONArray(response.body().string());
+
+        response.close();
+
+        for (int i = 0; i < resp.length(); i++) {
+            JSONObject o = resp.getJSONObject(i);
+            if(o.getString("world").equals("iQLANDIA")) {
+                return new OpeningHours(ZonedDateTime.parse(o.getString("start")).withZoneSameLocal(ZoneId.of("Europe/Prague")),
+                        ZonedDateTime.parse(o.getString("end")).withZoneSameLocal(ZoneId.of("Europe/Prague")));
+            }
+        }
+        return null;
+    }
+
     public static class CachedDayShowsInfo {
         final @Nullable DayShowsInfo info;
         final ZonedDateTime purgeAt;

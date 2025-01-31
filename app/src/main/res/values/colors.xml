@@ -13,4 +13,6 @@
     <color name="unset_bg">#1F1F1F</color>
     <color name="duplicate_fg">#FF00FF</color>
     <color name="deep_blue">#000021</color>
+    <color name="open">#3CF436</color>
+    <color name="closed">#F44336</color>
 </resources>

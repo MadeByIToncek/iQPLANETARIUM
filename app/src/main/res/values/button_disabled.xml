@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.IQScanner.Disabled" parent="Base.Theme.IQScanner">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/unset_bg</item>
+        <item name="backgroundColor">@color/unset_bg</item>
+    </style>
+
+</resources>

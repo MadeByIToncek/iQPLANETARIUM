@@ -36,11 +36,12 @@ import java.util.TimerTask;
 import cz.iqlandia.iqplanetarium.scanner.R;
 import cz.iqlandia.iqplanetarium.scanner.api.IQApi;
 import cz.iqlandia.iqplanetarium.scanner.api.OpeningHours;
+import cz.iqlandia.iqplanetarium.scanner.knowledge.KnowledgeBook;
 import cz.iqlandia.iqplanetarium.scanner.planetarium.PlanetariumShowlistActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CAMERA = 1;
-    private static final int[] messages = {
+    public static final int[] messages = {
             R.string.unhinged_message_1,
             R.string.unhinged_message_2,
             R.string.unhinged_message_3,
@@ -56,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             R.string.unhinged_message_13,
             R.string.unhinged_message_14,
             R.string.unhinged_message_15};
-    private static final Random r = new Random(System.currentTimeMillis());
     public static MainActivity activity;
     private static Timer timer = new Timer("Time updater");
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         activity = this;
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_disambiuation);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton iqlandia = findViewById(R.id.iqlandia);
         ImageButton iqplanetarium = findViewById(R.id.iqplanetarium);
         ImageButton iqpark = findViewById(R.id.iqpark);
-        ImageButton iqtally = findViewById(R.id.iqtallyclient);
+        ImageButton knowledge_book = findViewById(R.id.iqtallyclient);
 
         iqlandia.setOnClickListener(c -> Toast.makeText(activity, getMessage(), Toast.LENGTH_SHORT).show());
         iqplanetarium.setOnClickListener(c -> runOnUiThread(() -> {
@@ -108,7 +108,10 @@ public class MainActivity extends AppCompatActivity {
             this.startActivity(offline);
         }));
         iqpark.setOnClickListener(c -> Toast.makeText(activity, getMessage(), Toast.LENGTH_SHORT).show());
-        iqtally.setOnClickListener(c -> Toast.makeText(activity, getMessage(), Toast.LENGTH_SHORT).show());
+        knowledge_book.setOnClickListener(c -> {
+            Intent offline = new Intent(activity, KnowledgeBook.class);
+            this.startActivity(offline);
+        });
         feedback.setOnClickListener((c) -> FirebaseAppDistribution.getInstance().startFeedback("Home screen feedback"));
     }
     int counter = 0;
@@ -132,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             });
         }
-        return messages[r.nextInt(messages.length)];
+        return messages[counter % messages.length];
     }
 
 

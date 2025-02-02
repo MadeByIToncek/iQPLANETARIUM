@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <style name="Base.Theme.IQScanner.Button" parent="ThemeOverlay.Material3.Button">
+         <item name="android:textColor">@color/text</item>
+         <item name="android:textSize">18sp</item>
+         <item name="cornerRadius">4sp</item>
+     </style>
+</resources>

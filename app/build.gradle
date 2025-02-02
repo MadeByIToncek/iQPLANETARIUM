@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace 'cz.iqlandia.iqplanetarium.scanner'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "cz.iqlandia.iqplanetarium.scanner"

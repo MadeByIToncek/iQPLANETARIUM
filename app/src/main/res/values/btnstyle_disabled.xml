@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <style name="Base.Theme.IQScanner.ButtonDis" parent="Base.Theme.IQScanner.Button">
+         <item name="android:clickable">false</item>
+     </style>
+</resources>

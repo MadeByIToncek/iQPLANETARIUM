@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.IQScanner.Red" parent="Base.Theme.IQScanner">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/btn_red_bg</item>
+        <item name="backgroundColor">@color/btn_red_bg</item>
+    </style>
+</resources>

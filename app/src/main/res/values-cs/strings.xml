@@ -19,4 +19,20 @@
     <string name="beta">BETA!</string>
     <string name="dear_employee_title">Zdravím,</string>
     <string name="dear_employee_body">tato aplikace je stále ve vývoji. Pokud narazíte na jakékoli potíže nebo vás napadne nějaká funkce, která by se do aplikace hodila, neváhejte využít tlačítka \"Zpětná vazba\" nebo mi napište email na itoncek@itoncek.space. Děkuji že se účastníte testování této aplikace 💙</string>
+    <string name="unhinged_message_1">Tady nic není</string>
+    <string name="unhinged_message_2">Nemáš co na práci?</string>
+    <string name="unhinged_message_3">Vedení ti vzkazuje, že máš jít makat!</string>
+    <string name="unhinged_message_4">Co tady hledáš, nic tu není</string>
+    <string name="unhinged_message_5">Proč to sem dávám? Aby tu nebylo prázdno</string>
+    <string name="unhinged_message_6">Kam koukáš!</string>
+    <string name="unhinged_message_7">Dobrá, heslo je 123</string>
+    <string name="unhinged_message_8">Rover roveruje, gyroskop gyroskopuje a ty se flákáš!</string>
+    <string name="unhinged_message_9">Proč se namáháš mačkáním těchto tlačítek?</string>
+    <string name="unhinged_message_10">Pozor Lucka!</string>
+    <string name="unhinged_message_11">Kecal jsem, heslo je \"PrestanSeFlakatABezMakat\" bez mezer!</string>
+    <string name="unhinged_message_12">Kam jsem zahodil svůj null pointer?</string>
+    <string name="unhinged_message_15">Běž makat!</string>
+    <string name="secret_button">Tajné tlačitko</string>
+    <string name="knowledge_book_title">Knihovna</string>
+    <string name="kb_kosmo_zrcadlo">Měsíční zrcadlo</string>
 </resources>

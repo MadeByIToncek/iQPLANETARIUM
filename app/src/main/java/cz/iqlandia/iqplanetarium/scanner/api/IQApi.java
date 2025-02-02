@@ -272,8 +272,8 @@ public class IQApi {
         for (int i = 0; i < resp.length(); i++) {
             JSONObject o = resp.getJSONObject(i);
             if(o.getString("world").equals("iQLANDIA")) {
-                return new OpeningHours(ZonedDateTime.parse(o.getString("start")).withZoneSameLocal(ZoneId.of("Europe/Prague")),
-                        ZonedDateTime.parse(o.getString("end")).withZoneSameLocal(ZoneId.of("Europe/Prague")));
+                return new OpeningHours(LocalDateTime.parse(o.getString("start"),DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).atZone(ZoneId.of("Europe/Prague")).withZoneSameLocal(ZoneId.of("Europe/Prague")),
+                        LocalDateTime.parse(o.getString("end"),DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).atZone(ZoneId.of("Europe/Prague")).withZoneSameLocal(ZoneId.of("Europe/Prague")));
             }
         }
         return null;

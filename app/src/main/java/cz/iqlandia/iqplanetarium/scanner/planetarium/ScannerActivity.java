@@ -73,7 +73,7 @@ public class ScannerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_scanner);
+        setContentView(R.layout.activity_planetarium_scanner);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         Intent intent = this.getIntent();

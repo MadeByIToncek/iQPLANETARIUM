@@ -3,7 +3,7 @@
     <color name="iqprimary">#00A0DE</color>
     <color name="background">#FF0b163f</color>
     <color name="black">#FF000000</color>
-    <color name="err_fg">#C80732</color>
+    <color name="err_fg">#EF1646</color>
     <color name="err_bg">#290109</color>
     <color name="ok_fg">#76B82A</color>
     <color name="ok_bg">#1D2E09</color>
@@ -15,4 +15,14 @@
     <color name="deep_blue">#000021</color>
     <color name="open">#3CF436</color>
     <color name="closed">#F44336</color>
+    <color name="text">#FFFFFF</color>
+    <color name="dark_text">#000000</color>
+
+
+    <color name="btn_green_bg">#059F00</color>
+    <color name="btn_orange_bg">#FF8C00</color>
+    <color name="btn_yellow_bg">#FFFB00</color>
+    <color name="btn_red_bg">#FF0000</color>
+    <color name="btn_blue_bg">#0040FF</color>
+    <color name="btn_lblue_bg">#00FCFF</color>
 </resources>

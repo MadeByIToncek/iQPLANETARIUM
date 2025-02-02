@@ -22,7 +22,10 @@
         android:theme="@style/Theme.IQScanner"
         tools:targetApi="31">
         <activity
-            android:name=".tally.TallyActivity"
+            android:name=".knowledge.KBKosmoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".knowledge.KnowledgeBook"
             android:exported="false" />
         <activity
             android:name=".planetarium.ScannerActivity"

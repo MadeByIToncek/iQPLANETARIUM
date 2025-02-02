@@ -21,7 +21,7 @@
     <string name="iqlandia" translatable="false">iQLandia</string>
     <string name="iqplanet" translatable="false">iQPlanetárium</string>
     <string name="iqpark" translatable="false">iQPark</string>
-    <string name="iqtally" translatable="false">iQTallyClient</string>
+    <string name="knowledge_book_title">Knowledge Book</string>
     <string name="scanner_dupl">OPAKOVANÉ NAČTENÍ</string>
     <string name="unhinged_message_1">You don\'t need to look, there is nothing there</string>
     <string name="unhinged_message_2">Where are you looking, aren\'t you supposed to do something?</string>
@@ -35,8 +35,9 @@
     <string name="unhinged_message_10">Behind you :)</string>
     <string name="unhinged_message_11">The code is as easy as abc.</string>
     <string name="unhinged_message_12">Where did I put my NULL pointer again?</string>
-    <string name="unhinged_message_13">[object Object]</string>
-    <string name="unhinged_message_14">:)</string>
+    <string name="unhinged_message_13" translatable="false">[object Object]</string>
+    <string name="unhinged_message_14" translatable="false">:)</string>
     <string name="unhinged_message_15">Get back to work! There is nothing here</string>
     <string name="secret_button">Secret button</string>
+    <string name="kb_kosmo_zrcadlo">Měsíční zrcadlo</string>
 </resources>

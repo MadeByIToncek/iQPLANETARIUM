@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deep_blue"
+    tools:context=".knowledge.KnowledgeBook">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/exit_kb"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/deep_blue"
+            android:contentDescription="@string/exit"
+            android:scaleType="center"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar2"
+            app:srcCompat="@drawable/google_baseline_arrow_back_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/kb_tree_terasa"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Solární terasa"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toTopOf="@+id/kb_tree_kosmo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <Button
+        android:id="@+id/kb_tree_kosmo"
+        style="@style/Base.Theme.IQScanner.Button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Kosmo"
+        android:theme="@style/Base.Theme.IQScanner.Green"
+        app:layout_constraintBottom_toTopOf="@+id/kb_tree_matematikum"
+        app:layout_constraintEnd_toEndOf="@id/kb_tree_terasa"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/kb_tree_veda_doma"
+        app:layout_constraintTop_toBottomOf="@+id/kb_tree_terasa" />
+
+    <Button
+        android:id="@+id/kb_tree_veda_doma"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="Věda v domě"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toBottomOf="@+id/kb_tree_kosmo"
+        app:layout_constraintEnd_toStartOf="@+id/kb_tree_kosmo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/kb_tree_terasa"
+        app:layout_constraintTop_toTopOf="@+id/kb_tree_kosmo" />
+
+    <Button
+        android:id="@+id/kb_tree_matematikum"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:text="MatematikUm"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toTopOf="@+id/kb_tree_zivly"
+        app:layout_constraintEnd_toEndOf="@+id/kb_tree_kosmo"
+        app:layout_constraintStart_toEndOf="@+id/kb_tree_clovek"
+        app:layout_constraintTop_toBottomOf="@+id/kb_tree_kosmo" />
+
+    <Button
+        android:id="@+id/kb_tree_clovek"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="Člověk"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toBottomOf="@+id/kb_tree_matematikum"
+        app:layout_constraintEnd_toStartOf="@+id/kb_tree_matematikum"
+        app:layout_constraintStart_toEndOf="@id/kb_tree_smysly"
+        app:layout_constraintTop_toTopOf="@+id/kb_tree_matematikum" />
+
+    <Button
+        android:id="@+id/kb_tree_smysly"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="Smysly"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toBottomOf="@+id/kb_tree_matematikum"
+        app:layout_constraintEnd_toStartOf="@+id/kb_tree_clovek"
+        app:layout_constraintStart_toStartOf="@id/kb_tree_terasa"
+        app:layout_constraintTop_toTopOf="@+id/kb_tree_matematikum" />
+
+    <Button
+        android:id="@+id/kb_tree_zivly"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:text="Živly"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toTopOf="@+id/kb_tree_voda"
+        app:layout_constraintEnd_toEndOf="@+id/kb_tree_terasa"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/kb_tree_geo"
+        app:layout_constraintTop_toBottomOf="@+id/kb_tree_matematikum" />
+
+    <Button
+        android:id="@+id/kb_tree_geo"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="Geo"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toBottomOf="@+id/kb_tree_zivly"
+        app:layout_constraintEnd_toStartOf="@+id/kb_tree_zivly"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/kb_tree_tulka"
+        app:layout_constraintTop_toTopOf="@+id/kb_tree_zivly" />
+
+    <Button
+        android:id="@+id/kb_tree_tulka"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="TULaborka"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toBottomOf="@+id/kb_tree_zivly"
+        app:layout_constraintEnd_toStartOf="@+id/kb_tree_geo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/kb_tree_terasa"
+        app:layout_constraintTop_toTopOf="@+id/kb_tree_zivly" />
+
+
+    <Button
+        android:id="@+id/kb_tree_voda"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:text="Vodní svět"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toTopOf="@+id/kb_tree_geolab"
+        app:layout_constraintEnd_toEndOf="@+id/kb_tree_zivly"
+        app:layout_constraintStart_toStartOf="@+id/kb_tree_terasa"
+        app:layout_constraintTop_toBottomOf="@+id/kb_tree_zivly" />
+
+    <Button
+        android:id="@+id/kb_tree_geolab"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        android:text="GeoLab"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/kb_tree_voda"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/kb_tree_vynalezy"
+        app:layout_constraintTop_toBottomOf="@+id/kb_tree_voda" />
+
+    <Button
+        android:id="@+id/kb_tree_vynalezy"
+        style="@style/Base.Theme.IQScanner.ButtonDis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="Překonané vynálezy"
+        android:theme="@style/Base.Theme.IQScanner.Disabled"
+        app:layout_constraintBottom_toBottomOf="@id/kb_tree_geolab"
+        app:layout_constraintEnd_toStartOf="@+id/kb_tree_geolab"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/kb_tree_voda"
+        app:layout_constraintTop_toTopOf="@+id/kb_tree_geolab" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

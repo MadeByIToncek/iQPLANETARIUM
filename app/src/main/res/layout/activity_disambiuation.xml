@@ -70,8 +70,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/betamessage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time">
+        app:layout_constraintTop_toBottomOf="@+id/time"
+        app:layout_constraintVertical_bias="0.0">
 
 
         <ImageButton
@@ -135,7 +137,7 @@
             android:id="@+id/iqtallyclient"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/unset_bg"
+            android:background="@color/ok_bg"
             android:contentDescription="@string/not_speakable"
             android:cropToPadding="false"
             android:paddingLeft="8dp"
@@ -147,7 +149,7 @@
             app:layout_constraintEnd_toEndOf="@+id/iqplanetarium"
             app:layout_constraintStart_toEndOf="@+id/iqpark"
             app:layout_constraintTop_toTopOf="@+id/iqpark"
-            app:srcCompat="@drawable/iq_grey" />
+            app:srcCompat="@drawable/iq_green" />
 
 
         <ImageButton
@@ -203,11 +205,11 @@
             app:layout_constraintStart_toStartOf="@+id/iqpark" />
 
         <TextView
-            android:id="@+id/iqfab_label"
+            android:id="@+id/kb_dabg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="@string/iqtally"
+            android:text="@string/knowledge_book_title"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/iqtallyclient"
             app:layout_constraintEnd_toEndOf="@+id/iqtallyclient"
@@ -223,24 +225,23 @@
             app:layout_constraintBottom_toBottomOf="@+id/iqfeedback"
             app:layout_constraintEnd_toEndOf="@+id/iqfeedback"
             app:layout_constraintStart_toStartOf="@+id/iqfeedback" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/secret_button"
-        android:layout_width="80dp"
-        android:layout_height="52dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/err_bg"
-        android:backgroundTintMode="src_in"
-        android:clickable="true"
-        android:text="@string/secret_button"
-        android:textColor="@color/err_fg"
-        android:textSize="10sp"
-        android:visibility="gone"
-        app:cornerRadius="8sp"
-        app:layout_constraintBottom_toBottomOf="@+id/time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/time"
-        app:layout_constraintTop_toTopOf="@+id/time" />
+        <Button
+            android:id="@+id/secret_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/err_bg"
+            android:backgroundTintMode="src_in"
+            android:clickable="true"
+            android:text="@string/secret_button"
+            android:textColor="@color/err_fg"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:cornerRadius="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iqfeedback"
+            app:layout_constraintTop_toBottomOf="@+id/iqtallyclient" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

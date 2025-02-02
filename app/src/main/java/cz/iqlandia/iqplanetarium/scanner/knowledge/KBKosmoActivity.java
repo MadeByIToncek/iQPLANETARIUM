@@ -1,4 +1,4 @@
-package cz.iqlandia.iqplanetarium.scanner.tally;
+package cz.iqlandia.iqplanetarium.scanner.knowledge;
 
 import android.os.Bundle;
 
@@ -10,13 +10,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import cz.iqlandia.iqplanetarium.scanner.R;
 
-public class TallyActivity extends AppCompatActivity {
+public class KBKosmoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_tally);
+        setContentView(R.layout.activity_kb_kosmo);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

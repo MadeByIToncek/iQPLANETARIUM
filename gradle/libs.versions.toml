@@ -1,5 +1,5 @@
 [versions]
-agp = "8.6.0"
+agp = "8.9.0"
 firebaseAppdistribution = "16.0.0-beta13"
 firebaseAppdistributionApi = "16.0.0-beta15"
 firebaseBom = "33.2.0"

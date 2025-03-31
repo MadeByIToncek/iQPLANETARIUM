@@ -2,7 +2,7 @@
 agp = "8.9.0"
 firebaseAppdistribution = "16.0.0-beta15"
 firebaseAppdistributionApi = "16.0.0-beta15"
-firebaseBom = "33.11.0"
+firebaseBom = "33.12.0"
 json = "20250107"
 junit = "4.13.2"
 junitVersion = "1.2.1"
